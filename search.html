@@ -62,10 +62,37 @@
 	<!-- Drawer End -->
 
 	<!-- Content Start -->
-	<div class="contentContainer inFrame">
+	<div class="contentContainer">
 		<div class="flexRow topRow">
 			<h1 class="title searchTitle">Search results for "iPhone"</h1>
 		</div>
+		
+		<form action="search.html" method="GET" class="filter">
+			<div class="filterTitle flexRow">
+				<label>Filter By: </label>
+				<div id="catFilterButton" class="button activeFilter">Category</div>
+			</div>
+			<div id="catFilterSection">
+				<div class="flexRow filterItem">
+					<input type="checkbox" name="cat1"><label>Category 1</label>
+				</div>
+				<div class="flexRow filterItem">
+					<input type="checkbox" name="cat2"><label>Category 2</label>
+				</div>
+				<div class="flexRow filterItem">
+					<input type="checkbox" name="cat3"><label>Category 3</label>
+				</div>
+				<div class="flexRow filterItem">
+					<input type="checkbox" name="cat4"><label>Category 4</label>
+				</div>
+				<div class="flexRow filterItem">
+					<input type="checkbox" name="cat5"><label>Category 5</label>
+				</div>
+			</div>
+			<div class="flexRow applyContainer">
+				<input type="submit" value="Apply" class="submit">
+			</div>
+		</form>
 		<div class="flexColumn">
 			<div class="post flexRow">
 				<img src="imgs/item1.jpg">
