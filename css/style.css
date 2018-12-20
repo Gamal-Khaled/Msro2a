@@ -102,6 +102,10 @@ nav .title, nav .humIcon{
 	background-color: rgb(1, 105, 185);
 	transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+.welcome{
+	color: #FFFFFF !important;
+	font-size: 18px;
+}
 .drawer{
 	position: fixed;
 	top: 70px;
