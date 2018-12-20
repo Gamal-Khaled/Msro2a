@@ -16,9 +16,6 @@ class MainPageController extends PageController
     public function __construct()
     {
         $this -> userSQLClient = new UsersSQLClient();
-        
-        $this -> setCU($this -> userSQLClient -> getUserById(1));
-        
         $this -> postsSQLClient = new PostsSQLClient();
     
         $this -> postsToBeDisplayed = $this -> postsSQLClient -> getAllPosts();

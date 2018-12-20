@@ -14,11 +14,6 @@ class PageController
         $this -> nvgtr = new Navigator();
     }
 
-    public function setCU(User $u)
-    {
-        $this -> currentUser = $u;
-    }
-
     public function getCurrentUser()
     {
         return $this -> currentUser;
