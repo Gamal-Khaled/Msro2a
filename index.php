@@ -77,6 +77,9 @@
 
 	<!-- Content Start -->
 	<div class="contentContainer inFrame">
+		<?php if(count($controller -> getPosts()) == 0): ?>
+			<label class="noPostsMessage">There is nothing posted yet.</label>
+		<?php endif; ?>
 		<?php foreach ($controller -> getPosts() as $post): ?>
 			<div class="flexColumn">
 				<div class="post flexRow">
@@ -93,7 +96,9 @@
 							</div>
 							<div>
 								<label>Categories</label> <br>
-								<label>Mobiles, Electronics, Personal 7agat</label>
+								<?php foreach ($post -> getCategories() as $category): ?>
+									<label><?= $category -> getName() ?>, </label>
+								<?php endforeach;?>
 							</div>
 						</div>
 					</div>

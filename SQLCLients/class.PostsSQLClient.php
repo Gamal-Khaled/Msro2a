@@ -63,7 +63,9 @@ class PostsSQLClient extends SQLClient
         
         $posts = [];
         foreach ($result as $row) {
-            array_push($posts, new Post($row[0], $row[3], $row[2], $row[1]));
+            $postTemp = new Post($row[0], $row[3], $row[2], $row[1]);
+            $postTemp -> loadCats();
+            array_push($posts, $postTemp);
         }
 
         return $posts;
@@ -98,6 +100,22 @@ class PostsSQLClient extends SQLClient
 
         return $returnValue;
     }
+
+    public function loadCats(Post $post)
+    {
+        $query = "SELECT * FROM `categories` WHERE postId = ". $post -> getId();
+        $result = ($this -> db -> query($query)) -> fetch_all();
+
+        echo "<script>console.log(".json_encode($result).")</script>";
+
+        if($result != null)
+        {
+            foreach ($result as $row) {
+                echo "<script>console.log(".json_encode($row).")</script>";
+                $post -> addCategory(new Category($row[0], $row[2]));
+            }
+            return;
+        }
+    }
 }
-//echo "<script>console.log(".json_encode($result).")</script>";
 ?>

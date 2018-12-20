@@ -2,6 +2,7 @@
 
 require_once("SQLClients/class.SQLClient.php");
 require_once("classes/class.User.php");
+require_once("classes/class.Category.php");
 
 class UsersSQLClient extends SQLClient
 {

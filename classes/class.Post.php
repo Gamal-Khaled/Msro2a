@@ -1,5 +1,7 @@
 <?php
 
+require_once("SQLClients/class.PostsSQLClient.php");
+
 class Post
 {
 
@@ -9,7 +11,7 @@ class Post
     private $userId = null;
 
     private $questions = [];
-    private $categoriesId = [];
+    private $categories = [];
 
     public function __construct(int $id, String $description, String $imageUrl, int $userId)
     {
@@ -21,7 +23,7 @@ class Post
 
     public function loadCats()
     {
-        
+        (new PostsSQLClient()) -> loadCats($this);
     }
 
     public function getId()
@@ -41,12 +43,7 @@ class Post
 
     public function getQuestions()
     {
-        $returnValue = null;
-
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C38 begin
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C38 end
-
-        return $returnValue;
+        return $this -> questions;
     }
 
     public function getQuestionByIndex( id $integer)
@@ -90,12 +87,7 @@ class Post
 
     public function getCategories()
     {
-        $returnValue = null;
-
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C56 begin
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C56 end
-
-        return $returnValue;
+        return $this -> categories;
     }
 
     public function getCategoryByIndex( integer $ind)
@@ -108,14 +100,9 @@ class Post
         return $returnValue;
     }
 
-    public function addCategory( integer $catId)
+    public function addCategory(Category $cat)
     {
-        $returnValue = null;
-
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C5F begin
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C5F end
-
-        return $returnValue;
+        array_push($this -> categories, $cat);
     }
 
     public function setUserId( integer $userId)
