@@ -6,28 +6,28 @@ require_once("classes/class.Category.php");
 
 class UsersSQLClient extends SQLClient
 {
-    public function saveNewAccount( User $newUser)
+    public function saveNewAccount($newUser)
     {
         $returnValue = null;
 
         return $returnValue;
     }
 
-    public function deleteUserAccount( integer $userId)
+    public function deleteUserAccount($userId)
     {
         $returnValue = (bool) false;
 
         return (bool) $returnValue;
     }
 
-    public function getUserByEmail(String $email)
+    public function getUserByEmail($email)
     {
         $returnValue = null;
 
         return $returnValue;
     }
 
-    public function getUserById(int $userId)
+    public function getUserById($userId)
     {
         $query = "SELECT * FROM `users` WHERE id = $userId";
         $result = ($this -> db -> query($query)) -> fetch_assoc();
@@ -40,7 +40,7 @@ class UsersSQLClient extends SQLClient
         return null;
     }
 
-    public function getUsersByIds(array $ids)
+    public function getUsersByIds($ids)
     {
         if(count($ids)){
             $query = "SELECT * FROM `users` WHERE id = " . $ids[0];
@@ -62,5 +62,4 @@ class UsersSQLClient extends SQLClient
         return null;
     }
 }
-
 ?>

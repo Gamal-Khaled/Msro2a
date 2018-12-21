@@ -11,7 +11,7 @@ class SearchController extends PageController
  
     }
 
-    public function onPostClick( integer $postId)
+    public function onPostClick($postId)
     {
 
     }

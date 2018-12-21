@@ -32,7 +32,7 @@ class MainPageController extends PageController
 
     }
 
-    public function onMineButtonClick(Post $post)
+    public function onMineButtonClick($post)
     {
         
     }
@@ -42,7 +42,7 @@ class MainPageController extends PageController
         return $this -> postsToBeDisplayed;
     }
 
-    public function getUserById(int $id)
+    public function getUserById($id)
     {
         return $this -> postsToBeDisplayedOwners[(string) $id];
     }

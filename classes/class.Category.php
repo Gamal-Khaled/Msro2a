@@ -5,7 +5,7 @@ class Category
     public $id = null;
     public $categoryName = null;
 
-    public function __construct(int $id,  String $categoryName)
+    public function __construct($id, $categoryName)
     {
         $this -> id = $id;
         $this -> categoryName = $categoryName;
@@ -21,5 +21,4 @@ class Category
         return $this -> categoryName;
     }
 }
-
 ?>

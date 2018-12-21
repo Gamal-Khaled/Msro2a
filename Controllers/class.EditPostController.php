@@ -5,6 +5,7 @@ require_once("Controllers/class.PageController.php");
 class EditPostController extends PageController
 {
     public $currentPost = null;
+    
     public function onEditIMGClick()
     {
         

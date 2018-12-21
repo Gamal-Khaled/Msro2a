@@ -13,7 +13,7 @@ class Post
     private $questions = [];
     private $categories = [];
 
-    public function __construct(int $id, String $description, String $imageUrl, int $userId)
+    public function __construct($id, $description, $imageUrl, $userId)
     {
         $this -> id = $id;
         $this -> description = $description;
@@ -46,14 +46,9 @@ class Post
         return $this -> questions;
     }
 
-    public function getQuestionByIndex( id $integer)
+    public function getQuestionByIndex($id)
     {
-        $returnValue = null;
 
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C3A begin
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C3A end
-
-        return $returnValue;
     }
 
 
@@ -62,26 +57,19 @@ class Post
         return $this -> userId;
     }
 
-    public function setDescription( String $desc)
+    public function setDescription($desc)
     {
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C46 begin
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C46 end
+
     }
 
-    public function setImg( String $imgUrl)
+    public function setImg($imgUrl)
     {
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C49 begin
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C49 end
+
     }
 
-    public function addQuestion( String $question)
+    public function addQuestion($question)
     {
-        $returnValue = null;
 
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C53 begin
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C53 end
-
-        return $returnValue;
     }
 
 
@@ -90,46 +78,29 @@ class Post
         return $this -> categories;
     }
 
-    public function getCategoryByIndex( integer $ind)
+    public function getCategoryByIndex($ind)
     {
-        $returnValue = null;
 
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C58 begin
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C58 end
-
-        return $returnValue;
     }
 
-    public function addCategory(Category $cat)
+    public function addCategory($cat)
     {
         array_push($this -> categories, $cat);
     }
 
-    public function setUserId( integer $userId)
+    public function setUserId($userId)
     {
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C62 begin
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C62 end
+
     }
 
-    public function removeQuestion( integer $ind)
+    public function removeQuestion($ind)
     {
-        $returnValue = null;
 
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C7D begin
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C7D end
-
-        return $returnValue;
     }
 
-    public function removeCategory( integer $ind)
+    public function removeCategory($ind)
     {
-        $returnValue = null;
 
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C80 begin
-        // section 127-0-0-1--f3d0e8e:167bbcb7875:-8000:0000000000000C80 end
-
-        return $returnValue;
     }
 }
-
 ?>

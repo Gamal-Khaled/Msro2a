@@ -6,7 +6,7 @@ class RequestsController extends PageController
 {
     public $requestsToBeDisplayed = null;
 
-    public function onRequestClick( integer $rqstId)
+    public function onRequestClick($rqstId)
     {
 
     }
