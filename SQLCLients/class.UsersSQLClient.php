@@ -8,23 +8,17 @@ class UsersSQLClient extends SQLClient
 {
     public function saveNewAccount($newUser)
     {
-        $returnValue = null;
-
-        return $returnValue;
+        
     }
 
     public function deleteUserAccount($userId)
     {
-        $returnValue = (bool) false;
-
-        return (bool) $returnValue;
+        
     }
 
     public function getUserByEmail($email)
     {
-        $returnValue = null;
-
-        return $returnValue;
+        
     }
 
     public function getUserById($userId)
