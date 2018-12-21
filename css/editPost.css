@@ -160,11 +160,6 @@ nav .title, nav .humIcon{
 }
 
 /* Content */
-body{
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-}
 .contentContainer{
 	display: flex;
 	flex: 1;
@@ -175,12 +170,14 @@ body{
 .post{
 	border: 0.1px solid #EEEEEE;
 	border-bottom: none;
-	height: 300px;
+	height: fit-content;
 	padding: 1px;
+
 	justify-content: flex-start;
+	align-items: flex-start;
 }
 .post img{
-	height: 100%;
+	height: 300px;
 }
 .postDetails{
 	padding: 20px;
@@ -199,7 +196,7 @@ body{
 .post > .flexColumn{
 	height: 100%;
 	width: 100%;
-	border-left: 0.1px solid #EEEEEE;
+	border-left: 0.1px solid #EEEEEE; 
 	justify-content: space-between;
 }
 .postButtons{
@@ -257,6 +254,37 @@ body{
 }
 .allCats > .flexRow{
 	justify-content: flex-start;
+}
+.question{
+	padding-left: 10px;
+	margin-top: 10px;
+	height: 30px;
+	border-radius: 5px;
+	border: 1px solid #00477E;
+	width: 100%;
+}
+.add{
+	padding: 10px 15px;
+	background-color: #FFFFFF;
+	border: 2px solid #00477E;
+	color: #00477E;
+	margin-right: 10px;
+	border-radius: 5px;
+	font-weight: 500;
+	font-size: 15px;
+	width: fit-content;
+	margin-top: 10px;
+	cursor: pointer;
+	float: right;
+	align-self: flex-end;
+
+	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.add:hover{
+	color: #FFFFFF;
+	background-color: #00477E;
+
+	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 @media (max-width: 1300px){

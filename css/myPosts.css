@@ -159,12 +159,7 @@ nav .title, nav .humIcon{
 	display: none;
 }
 
-/* Content */
-body{
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-}
+/* Content */ 
 .contentContainer{
 	display: flex;
 	flex: 1;
@@ -231,21 +226,49 @@ body{
 	height: 298px;
 	width: 298px;
 }
-.deleteAccButton{
-	float: right;
-	height: 30px;
-	width: fit-content;
-	padding: 0px 20px;
-	border: 1px solid red;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	align-self: flex-end;
-	cursor: pointer;
+.buttonsContainer{
+	justify-content: flex-end;
 }
-.deleteAccButton > *{
-	color: red !important;
+.addPostButton{
+	padding: 10px 15px;
+	background-color: #FFFFFF;
+	border: 2px solid #007256;
+	color: #007256;
+	margin-right: 10px;
+	height: fit-content;
+	border-radius: 5px;
+	font-weight: 500;
+	font-size: 15px;
+	cursor: pointer;
+	margin-bottom: 10px;
+
+	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.addPostButton:hover{
+	color: #FFFFFF;
+	background-color: #007256;
+
+	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.deleteAccButton{
+	padding: 10px 15px;
+	background-color: #FFFFFF;
+	border: 2px solid #8B0000;
+	color: #8B0000;
+	margin-right: 10px;
+	border-radius: 5px;
+	font-weight: 500;
+	font-size: 15px;
+	cursor: pointer;
+	margin-bottom: 10px;
+
+	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.deleteAccButton:hover{
+	color: #FFFFFF;
+	background-color: #8B0000;
+
+	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .editButton{
 	background-color: #00477E;

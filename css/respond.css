@@ -16,6 +16,10 @@
 	align-items: center;
 	width: 100%;
 }
+.flexColumn{
+	display: flex;
+	flex-direction: column;
+}
 nav{
 	width: 100%;
 	height: 50px;
@@ -30,7 +34,6 @@ nav{
 
 	position: fixed;
 	top: 0;
-	z-index: 3;
 }
 nav > *{
 	display: flex;
@@ -105,9 +108,9 @@ nav .title, nav .humIcon{
 }
 .drawer{
 	position: fixed;
-	top: 117px;
+	top: 70px;
 	bottom: 0;
-	left: 30px;
+	left: 170px;
 	z-index: 2;
 
 	width: 249px;
@@ -156,128 +159,76 @@ nav .title, nav .humIcon{
 	display: none;
 }
 
-/* Filter */
-.filter{
-	position: fixed;
-	top: 117px;
-	right: 30px;
-	z-index: 2;
-
-	width: 249px;
-	height: 304px;
-	overflow: auto;
-	display: inline-block;
-	border: 0.1px solid #EEEEEE;
-}
-.filterTitle{
-	height: 50px;
-	border-bottom: 0.1px solid #EEEEEE;
-	justify-content: flex-start;
-	align-items: center;
-}
-.filterTitle > *{
-	padding: 14px 10px;
-}
-.filterTitle .button{
-	flex: 1;
-	text-align: center;
-	cursor: pointer;
-}
-.activeFilter{
-	color: #FFFFFF;
-	background-color: #00477E;
-}
-.filterItem{
-	height: 40px;
-	padding: 10px;
-	align-items: center;
-	justify-content: flex-start;
-}
-.filterItem label{
-	margin-left: 7px;
-}
-.applyContainer{
-	padding: 1px;
-	margin-top: 12px;
-}
-.submit{
-	cursor: pointer;
-	border: none;
-	background-color: #00477E;
-	height: 40px;
-	width: 100%;
-	color: #FFFFFF;
-	padding: 0px 20px;
-	font-size: 17px;
-}
-
 /* Content */
-.topRow{
-	width: 100%;
-	margin-bottom: 20px;
-
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-}
 .contentContainer{
 	display: flex;
 	flex: 1;
 	flex-direction: column;
 
-	margin: 70px 300px 0px 300px;
+	margin: 70px 0px 0px 300px;
 }
-.post{
-	border: 0.1px solid #EEEEEE;
-	border-bottom: none;
-	height: 300px;
-	padding: 1px;
-	justify-content: flex-start;
-}
-.post img{
-	height: 100%;
-}
-.postDetails{
-	padding: 20px;
-	height: 100%;
-	overflow: auto;
-}
-.postDetails > div{
+.contentTitle{
 	margin-bottom: 15px;
+	font-size: 25px;
+	font-weight: 550;
 }
-.postDetails > div > label:first-of-type{
-	font-weight: bold;
+.questionContainer{
+	padding: 10px;
+	border: 2px solid #EEEEEE;
+	border-radius: 5px;
+	margin-bottom: 20px;
 }
-.postOwner{
+.questionContainer > *{
+	font-weight: 450;
+}
+.answer{
+	color: #007256;
+	padding-left: 20px;
+}
+.buttonsContainer{
 	display: flex;
-	align-items: flex-start;
+	flex-direction: row;
+	justify-content: flex-end;
 }
-.clientImg{
-	height: 50px !important;
-	width: 50px;
-	margin-right: 5px;
-}
-.post > .flexColumn{
-	height: 100%;
-	border-left: 0.1px solid #EEEEEE;
-}
-.postButtons{
-	height: 40px;
-	background-color: #00477E;
+.correct{
+	padding: 10px 15px;
+	background-color: #FFFFFF;
+	border: 2px solid #007256;
+	color: #007256;
+	margin-right: 10px;
+	height: fit-content;
+	border-radius: 5px;
+	font-weight: 500;
+	font-size: 15px;
 	cursor: pointer;
-	border: 0.1px solid #EEEEEE;
-	border-top: none;
-	margin-bottom: 30px;
-	
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.postButtons > *{
-	color: #FFFFFF;
-}
 
+	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.correct:hover{
+	color: #FFFFFF;
+	background-color: #007256;
+
+	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.wrong{
+	padding: 10px 15px;
+	background-color: #FFFFFF;
+	border: 2px solid #8B0000;
+	color: #8B0000;
+	margin-right: 10px;
+	border-radius: 5px;
+	font-weight: 500;
+	font-size: 15px;
+	cursor: pointer;
+
+	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.wrong:hover{
+	color: #FFFFFF;
+	background-color: #8B0000;
+
+	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
 
 @media (max-width: 1300px){
 	.drawer{
@@ -362,19 +313,9 @@ nav .title, nav .humIcon{
 		display: inline-block;
 		margin: 0px 10px;
 	}
-	.filter{
-		position: static;
-		z-index: 0;
-		width: 100%;
-		margin-bottom: 30px;
-	}
-	.filterItem, .filterTitle{
-		flex-direction: row;
-	}
 	.contentContainer{
 		margin: 0px;
 		margin-top: 70px;
-		padding: 0px 20px;
 	}
 	.searchForPhones{
 		flex-direction: row;

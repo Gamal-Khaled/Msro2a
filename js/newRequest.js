@@ -1,9 +1,3 @@
-//Onresize
-document.getElementsByTagName('body')[0].onresize = function(){
-    $(".post > img").height($(".post > img").width());
-}
-$(".post > img").height($(".post > img").width());
-
 //Drawer Code
 let drawerAnimationTime = 200;
 const openDrawer = () => {
@@ -46,11 +40,3 @@ $($(".searchIcon")[0]).click(function(e){
         $(".searchForPhones").slideToggle(150);
     }
 })
-
-//Add New Question Code
-$("#addNewQ").click(function(){
-    $(".question:last-of-type").after($('<input type="text" class="question newQuestion">'));
-});
-$("#addNewC").click(function(){
-    $(".category:last-of-type").after($('<div class="flexRow category"><input type="checkbox" name="cat1" value="cat1"><label><input type="text"></label></div>'));
-});

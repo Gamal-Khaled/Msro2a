@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2018 at 07:44 PM
+-- Generation Time: Dec 21, 2018 at 02:04 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -53,16 +53,17 @@ CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `imgUrl` varchar(150) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `userId`, `imgUrl`, `description`) VALUES
-(3, 1, 'imgs/item1.jpg', 'IPhone XS l2eto fe alcity mrme, s7bo 8be awe bsra7a y3ne hwa da3 mno 1000$ mn8er m ya5od balo??'),
-(4, 1, 'imgs/item1.jpg', 'IPhone XS 2 l2eto fe alcity mrme, s7bo 8be awe bsra7a y3ne hwa da3 mno 1000$ mn8er m ya5od balo??');
+INSERT INTO `posts` (`id`, `userId`, `imgUrl`, `description`, `name`) VALUES
+(3, 1, 'imgs/item1.jpg', 'IPhone XS l2eto fe alcity mrme, s7bo 8be awe bsra7a y3ne hwa da3 mno 1000$ mn8er m ya5od balo??', 'IPhone'),
+(4, 1, 'imgs/item1.jpg', 'IPhone XS 2 l2eto fe alcity mrme, s7bo 8be awe bsra7a y3ne hwa da3 mno 1000$ mn8er m ya5od balo??', 'IPhone Bardo');
 
 -- --------------------------------------------------------
 
