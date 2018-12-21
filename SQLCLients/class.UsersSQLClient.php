@@ -30,7 +30,8 @@ class UsersSQLClient extends SQLClient
     public function getUserById($userId)
     {
         $query = "SELECT * FROM `users` WHERE id = $userId";
-        $result = ($this -> db -> query($query)) -> fetch_assoc();
+        $result = ($this -> db -> query($query));
+        $result = $result -> fetch_assoc();
 
         if($result != null)
         {
@@ -47,7 +48,8 @@ class UsersSQLClient extends SQLClient
             for ($i = 1; $i < count($ids); $i++) { 
                 $query = $query . " or id = " . $ids[i];
             }
-            $result = ($this -> db -> query($query)) -> fetch_all();
+            $result = ($this -> db -> query($query));
+            $result = $result -> fetch_all();
             $users = [];
             
             if($result != null)

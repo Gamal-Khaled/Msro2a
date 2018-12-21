@@ -33,8 +33,8 @@ class PostsSQLClient extends SQLClient
     public function getAllPosts()
     {
         $query = "SELECT * FROM `Posts`";
-        $result = ($this -> db -> query($query)) -> fetch_all();
-
+        $result = ($this -> db -> query($query));
+        $result = $result -> fetch_all();
         
         $posts = [];
         foreach ($result as $row) {
@@ -64,7 +64,8 @@ class PostsSQLClient extends SQLClient
     public function loadCats($post)
     {
         $query = "SELECT * FROM `categories` WHERE postId = ". $post -> getId();
-        $result = ($this -> db -> query($query)) -> fetch_all();
+        $result = ($this -> db -> query($query));
+        $result = $result -> fetch_all();
 
         echo "<script>console.log(".json_encode($result).")</script>";
 
