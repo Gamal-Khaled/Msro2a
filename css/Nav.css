@@ -1,0 +1,163 @@
+
+nav{
+	width: 100%;
+	height: 50px;
+	background-color: #00477E;
+	padding: 0px 40px;
+	color: #FFFFFF;
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	position: fixed;
+	top: 0;
+}
+nav > *{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.humIcon{
+	cursor: pointer;
+	font-size: 20px;
+	display: none;
+}
+.title{
+	font-weight: normal;
+	font-size: 23px;
+	margin-top: -5px;
+}
+nav .title, nav .humIcon{
+	color: #FFFFFF;
+}
+.searchBar{
+	height: 30px;
+	width: 500px;
+	background-color: #fff;
+	padding-left: 30px;
+    font-size: 15px;
+    border-radius: 15px 0px 0px 15px;
+	border: none;
+	outline: none;
+}
+.searchIcon{
+	background-color: #FFFFFF;
+	height: 30px;
+	border-radius: 0px 15px 15px 0px;
+	border: none;
+	width: 60px;
+	border-left: 0.5px solid #adadad;
+	outline: none;
+	padding-right: 2px;
+	font-size: 15px;
+	cursor: pointer;
+	margin-right: 25px;
+	transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.navRight .searchIcon:hover{
+	color: #065FD4;
+	background-color: #D1D3D3;
+	transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.navRight .searchForm{
+	width: fit-content;
+}
+.searchForPhones{
+	display: none;
+}
+.signIn_Up_Button{
+	float: right;
+	border: 1px solid #FFFFFF;
+	background-color: transparent;
+	height: 30px;
+	padding: 0px 20px;
+	border-radius: 5px;
+	outline: none;
+	cursor: pointer;
+	font-size: 15px;
+	color: #FFFFFF;
+	transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+	margin-right: 5px;
+}
+.signIn_Up_Button:hover{
+	background-color: rgb(1, 105, 185);
+	transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.welcome{
+	color: #FFFFFF !important;
+	font-size: 18px;
+}
+@media (max-width: 1300px){
+	.searchBar{
+		width: 400px;
+	}
+	.searchIcon{
+		margin-right: 30px;
+	}
+}
+@media (max-width: 1155px){
+	.searchBar{
+		width: 300px;
+	}
+}
+@media (max-width: 1000px){
+	nav{
+		padding: 0px 15px;
+	}
+	.navRight .searchBar{
+		display: none;
+	}
+	.searchBar{
+		width: 100%;
+	}
+	.navRight .searchIcon{
+		border-radius: 5px;
+		margin-right: 5px;
+		background-color: #00477E;
+		border: 1px solid #FFFFFF;
+		width: 45px;
+	}
+	.navRight .searchIcon *{
+		color: #FFFFFF;
+	}
+	.navRight .searchIcon:hover{
+		background-color: #00477E;
+	}
+	.signIn_Up_Button{
+		padding: 0px 5px;
+	}
+	.signIn_Up_Button:hover{
+		background-color: #00477E;
+	}
+	.humIcon{
+		display: inline-block;
+		margin: 0px 10px;
+	}
+	.searchForPhones{
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+
+		position: fixed;
+		top: 50px;
+		left: 0px;
+		right: 0px;
+
+		width: 100%;
+		height: 50px;
+		padding: 10px 0px;
+		border-top: 1px solid #FFFFFF;
+		background-color: #00477E;
+	}
+	.searchForPhones .searchForm{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+	.searchForPhones .searchIcon{
+		margin: 0px;
+	}
+}
