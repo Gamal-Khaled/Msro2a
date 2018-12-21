@@ -5,22 +5,19 @@
         <a href="#" class="title">Msro2a</a>
     </div>
     <div class="drawerItem">
-        <a href="#">My Profile</a>
+        <a href="index.php">Home</a>
     </div>
     <div class="drawerItem">
-        <a href="#">My Posts</a>
+        <a href="myPosts.php">My Profile</a>
     </div>
     <div class="drawerItem">
-        <a href="#">Sent Requests</a>
+        <a href="requests.php">Recieved Requests</a>
     </div>
     <div class="drawerItem">
-        <a href="#">Recieved Requests</a>
+        <a href="messages.php">Recieved Messages</a>
     </div>
     <div class="drawerItem">
-        <a href="#">Recieved Messages</a>
-    </div>
-    <div class="drawerItem">
-        <a href="#">Search</a>
+        <a href="Search.php">Search</a>
     </div>
 </div>
 <div class="notDrawer"></div>

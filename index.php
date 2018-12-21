@@ -21,6 +21,8 @@
 	<link rel="stylesheet" type="text/css" href="css/nav.css">
 	<link rel="stylesheet" type="text/css" href="css/Drawer.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script type="text/javascript" src="js/js.js"></script>
 </head>
 <body>
 	<?php require_once("Components/Nav.php") ?>
@@ -54,12 +56,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="flexRow postButtons"><p>It's Mine</p></div>
+				<div class="flexRow postButtons" onclick="onMineButtonClick(<?=$post -> getId()?>, <?= $controller -> isLoggedIn() ? '1' : '0' ?>)"><p>It's Mine</p></div>
 			</div>
 		<?php endforeach; ?>
 	</div>
 	<!-- Content End -->
-
-	<script type="text/javascript" src="js/js.js"></script>
 </body>
 </html>

@@ -26,7 +26,7 @@
 	
 	<!-- Content Start -->
 	<div class="contentContainer inFrame">
-		<h1 class="contentTitle">Requests</h1>
+		<h1 class="contentTitle">Messages</h1>
 		<div class="message his">
 			<label>Your request for the item "Item Name" has been verified by the your item keeper please contact him to reclaim your item on: keeper@gmail.com</label>
 		</div>

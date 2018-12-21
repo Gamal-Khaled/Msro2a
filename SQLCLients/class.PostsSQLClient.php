@@ -67,12 +67,9 @@ class PostsSQLClient extends SQLClient
         $result = ($this -> db -> query($query));
         $result = $result -> fetch_all();
 
-        echo "<script>console.log(".json_encode($result).")</script>";
-
         if($result != null)
         {
             foreach ($result as $row) {
-                echo "<script>console.log(".json_encode($row).")</script>";
                 $post -> addCategory(new Category($row[0], $row[2]));
             }
             return;

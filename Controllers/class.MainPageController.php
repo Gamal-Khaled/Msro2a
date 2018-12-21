@@ -27,16 +27,6 @@ class MainPageController extends PageController
         $this -> postsToBeDisplayedOwners = $this -> userSQLClient -> getUsersByIds($this -> postsToBeDisplayedOwners);
     }
 
-    public function onAddNewPostClick()
-    {
-
-    }
-
-    public function onMineButtonClick($post)
-    {
-        
-    }
-
     public function getPosts()
     {
         return $this -> postsToBeDisplayed;
