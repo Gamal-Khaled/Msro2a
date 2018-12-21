@@ -47,3 +47,22 @@ $($(".searchIcon")[0]).click(function(e){
         $(".searchForPhones").slideToggle(150);
     }
 })
+
+$(document).submit(function(e) {
+    e.preventDefault();
+    let searchText;
+    if($(window).width() < 1000)
+        searchText = $(".searchForPhones form input").val();
+    else
+        searchText = $(".navRight form input").val();
+
+    let nextLocation = "search.php?searchText=" + searchText;
+
+    $(".filterItem input").toArray().forEach(element => {
+        if($(element).is(':checked')){
+            nextLocation += "&" + $(element).attr("name") + "=on";
+        }
+    });
+
+    window.location.href = nextLocation;
+})

@@ -5,7 +5,7 @@
         <a href="index.php" class="title">Msro2a</a>
     </div>
     <div class="navRight">
-        <form action="#" method="GET" class="searchForm flexRow" action="search.php">
+        <form method="GET" class="searchForm flexRow" action="search.php">
             <input type="text" class="searchBar" placeholder="Search" name="searchText" value="<?php if(isset($_SESSION["searchText"])) echo $_SESSION["searchText"] ?>"/>
             <button class="searchIcon"><i class="fas fa-search"></i></button>
         </form>
@@ -18,7 +18,7 @@
     </div>
 </nav>
 <div class="searchForPhones">
-    <form action="#" method="GET" class="searchForm inFrame" action="search.php">
+    <form method="GET" class="searchForm inFrame" action="search.php">
         <input type="text" class="searchBar" placeholder="Search" name="searchText"/>
         <button class="searchIcon"><i class="fas fa-search"></i></button>
     </form>

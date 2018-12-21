@@ -8,17 +8,17 @@ class Post
     private $id = null;
     private $description = null;
     private $imageUrl = null;
-    private $userId = null;
+    private $owner = null;
 
     private $questions = [];
     private $categories = [];
 
-    public function __construct($id, $description, $imageUrl, $userId)
+    public function __construct($id, $description, $imageUrl, $owner)
     {
         $this -> id = $id;
         $this -> description = $description;
         $this -> imageUrl = $imageUrl;
-        $this -> userId = $userId;
+        $this -> owner = $owner;
     }
 
     public function loadCats()
@@ -52,9 +52,9 @@ class Post
     }
 
 
-    public function getUserId()
+    public function getOwner()
     {
-        return $this -> userId;
+        return $this -> owner;
     }
 
     public function setDescription($desc)

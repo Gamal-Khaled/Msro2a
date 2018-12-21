@@ -40,8 +40,8 @@
 					<div class="flexColumn">
 						<div class="flexColumn postDetails">
 							<div class="postOwner">
-								<img src="imgs/Client.png" class="clientImg">
-								<label><?= $controller -> getUserById($post -> getUserId()) -> getName() ?></label>
+								<img src="<?= $post -> getOwner() -> getImg() ?>" class="clientImg">
+								<label><?= $post -> getOwner() -> getName() ?></label>
 							</div>
 							<div>
 								<label>Description</label> <br>

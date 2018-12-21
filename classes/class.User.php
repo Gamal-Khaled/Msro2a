@@ -68,7 +68,7 @@ class User
 
     public function getImg()
     {
-        
+        return $this -> imgUrl;
     }
 
     public function getMessagesIds()
