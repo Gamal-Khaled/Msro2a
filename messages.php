@@ -1,4 +1,6 @@
 <?php
+	require_once("classes/class.User.php");
+	
 	session_start();
 
 	require_once("Controllers/class.MessagesController.php");
@@ -19,6 +21,8 @@
 	<link rel="stylesheet" type="text/css" href="css/nav.css">
 	<link rel="stylesheet" type="text/css" href="css/Drawer.css">
 	<link rel="stylesheet" type="text/css" href="css/messages.css">
+
+	<script type="text/javascript" src="js/messages.js"></script>
 </head>
 <body>
 	<?php require_once("Components/Nav.php") ?>
@@ -27,15 +31,16 @@
 	<!-- Content Start -->
 	<div class="contentContainer inFrame">
 		<h1 class="contentTitle">Messages</h1>
-		<div class="message his">
-			<label>Your request for the item "Item Name" has been verified by the your item keeper please contact him to reclaim your item on: keeper@gmail.com</label>
-		</div>
-		<div class="message scam">
-			<label>Your request for the item "Item Name" has been rejected.</label>
-		</div>
+		<?php if(count($controller -> getUserMessages()) == 0): ?>
+			<label>No Messages Recieved Yet.</label>
+		<?php endif; ?>
+		<?php foreach ($controller -> getUserMessages() as $msg): ?>
+			<div class="message <?= $msg -> getMsgStyle() ?>">
+				<label><?= $msg -> getMsg() ?></label> <br>
+				<button class="wrong" onclick="onDeleteClick(<?= $msg -> getId()?>)">Delete Message</button>
+			</div>
+		<?php endforeach; ?>
 	</div>
 	<!-- Content End -->
-
-	<script type="text/javascript" src="js/messages.js"></script>
 </body>
 </html>

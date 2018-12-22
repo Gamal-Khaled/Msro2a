@@ -13,7 +13,7 @@ class User
     private $imgUrl = null;
 
     private $postsId = null;
-    private $msgsId = null;
+    private $msgs = [];
     private $sentRequestsId = null;
     private $recievedRequestsId = null;
 
@@ -46,17 +46,17 @@ class User
         
     }
 
-    public function getPostIdByIndex( integer $ind)
+    public function getPostIdByIndex($ind)
     {
         
     }
 
-    public function addPost( integer $postId)
+    public function addPost($postId)
     {
         
     }
 
-    public function removePost( integer $ind)
+    public function removePost($ind)
     {
         
     }
@@ -71,22 +71,22 @@ class User
         return $this -> imgUrl;
     }
 
-    public function getMessagesIds()
+    public function getMessages()
+    {
+        return $this -> msgs;
+    }
+
+    public function getMessageByIndex($ind)
     {
         
     }
 
-    public function getMessageByIndex( integer $ind)
+    public function addMessage($msg)
     {
-        
+        array_push($this -> msgs, $msg);
     }
 
-    public function addMessage( integer $MsgId)
-    {
-
-    }
-
-    public function removeMessage( integer $MsgInd)
+    public function removeMessage($MsgInd)
     {
         
     }
@@ -96,17 +96,17 @@ class User
         
     }
 
-    public function getSentRequestByIndex( integer $ind)
+    public function getSentRequestByIndex($ind)
     {
         
     }
 
-    public function addSentRequest( integer $requestId)
+    public function addSentRequest($requestId)
     {
         
     }
 
-    public function removeSentRequest( integer $requestInd)
+    public function removeSentRequest($requestInd)
     {
         
     }
@@ -123,14 +123,18 @@ class User
         
     }
 
-    public function addRecievedRequest( integer $requestId)
+    public function addRecievedRequest($requestId)
     {
         
     }
 
-    public function removeRecievedRequest( integer $requestIndex)
+    public function removeRecievedRequest($requestIndex)
     {
         
+    }
+
+    public function setMessages($messages){
+        $this -> msgs = $messages;
     }
 }
 ?>
