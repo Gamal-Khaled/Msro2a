@@ -2,6 +2,9 @@
 
 require_once("Controllers/class.PageController.php");
 
+require_once("SQLClients/class.PostsSQLClient.php");
+require_once("SQLClients/class.UsersSQLClient.php");
+
 class MyPostsController extends PageController
 {
     private $postsToBeDisplayed = null;
@@ -18,6 +21,14 @@ class MyPostsController extends PageController
         }
 
         $this -> postsSQLClient = new PostsSQLClient();
+
+        if($_POST){
+            if(isset($_POST["deleteAccount"]) && $_POST["deleteAccount"] == "1"){
+                (new UsersSQLClient()) -> deleteUserAccount($this -> currentUser -> getId());
+                $_SESSION['currentUser'] = null;
+                header("Location: index.php");
+            }
+        }
     
         $this -> postsToBeDisplayed = $this -> postsSQLClient -> getUserPosts($this -> currentUser);
 
@@ -32,15 +43,17 @@ class MyPostsController extends PageController
 
     public function onDeletePostClick($postId)
     {
-        //echo "<script>alert('Please Log-in First.')</script>";
+        $error = true;
         foreach ($this -> postsToBeDisplayed as $index => $post) {
             if($postId == $post -> getId()){
                 $this -> postsSQLClient -> deletePost($postId);
                 header("Location: " . $_SERVER["PHP_SELF"]);
+                $error = false;
             }
         }
 
-        header("Location: index.php");
+        if($error)
+            header("Location: index.php");
     }
 
     public function deleteAccount()

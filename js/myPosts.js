@@ -49,10 +49,6 @@ $(document).ready(function(){
     })
 })
 
-function deleteAccount(){
-    window.location.href = "myPosts.php?deleteAccount=1";
-}
-
 function onEditPostClick(postId) {
     window.location.href = "editPost.php?postToEdit=" + postId;
 }

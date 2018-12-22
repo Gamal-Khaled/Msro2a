@@ -13,7 +13,7 @@ class RequestsController extends PageController
         
         if(!$this -> isLoggedIn()){
             echo "<script>alert('Please Log-in First.')</script>";
-            header("Location: index.php");
+            header("Location: signIn.php");
         }
 
         $this -> requestsSQLClient = new RequestsSQLClient();

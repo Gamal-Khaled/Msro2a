@@ -46,10 +46,11 @@
 						<label><?= $controller -> getCurrentUser() -> getPhoneNumber() ?></label>
 					</div>
 				</div>
-				<div class="buttonsContainer flexRow">
-					<button onclick="onEditPostClick(-1)" class="addPostButton">Add Post</button>
-					<button onclick="deleteAccount()" class="deleteAccButton">Delete Account</button>
-				</div>
+				<form class="buttonsContainer flexRow" action="myPosts.php" method="POST">
+					<input type="hidden" name="deleteAccount" value="1">
+					<div onclick="onEditPostClick(-1)" class="addPostButton">Add Post</div>
+					<input class="deleteAccButton" value="Delete Account" type="submit">
+				</form>
 			</div>
 		</div>
 		<?php foreach ($controller -> getPosts() as $post): ?>

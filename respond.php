@@ -28,26 +28,16 @@
 	
 	<!-- Content Start -->
 	<div class="contentContainer inFrame">
-		<h1 class="contentTitle">Request For {Post Name} From {al3amel alrequest Name}</h1>
-		<div class="questionContainer">
-			<label class="question">Da3et fen w alsa3a kam??</label> <br>
-			<label class="answer">al5mes alsa3a 25</label>
-		</div>
-		<div class="questionContainer">
-			<label class="question">Da3et fen w alsa3a kam??</label> <br>
-			<label class="answer">al5mes alsa3a 25</label>
-		</div>
-		<div class="questionContainer">
-			<label class="question">Da3et fen w alsa3a kam??</label> <br>
-			<label class="answer">al5mes alsa3a 25</label>
-		</div>
-		<div class="questionContainer">
-			<label class="question">Da3et fen w alsa3a kam??</label> <br>
-			<label class="answer">al5mes alsa3a 25</label>
-		</div>
+		<h1 class="contentTitle">Request For <?= $controller -> getCurrentRequest() -> getPost() -> getName() ?> From <?= $controller -> getCurrentRequest() -> getPost() -> getOwner() -> getName() ?></h1>
+		<?php foreach ($controller -> getCurrentRequest() -> getPost() -> getQuestions() as $index => $question): ?>
+			<div class="questionContainer">
+				<label class="question"><?= $question ?></label> <br>
+				<label class="answer"><?= $controller -> getCurrentRequest() -> getAnswerByIndex($index) ?></label>
+			</div>
+		<?php endforeach; ?>
 		<div class="buttonsContainer">
-			<button class="correct">Correct Answers</button>
-			<button class="wrong">Wrong Answers</button>
+			<button class="correct" onclick="onValidClick(<?= $_GET['requestId'] ?>)">Correct Answers</button>
+			<button class="wrong" onclick="onInvalidClick(<?= $_GET['requestId'] ?>)">Wrong Answers</button>
 		</div>
 	</div>
 	<!-- Content End -->

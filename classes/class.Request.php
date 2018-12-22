@@ -25,7 +25,7 @@ class Request
 
     public function getAnswerByIndex($ind)
     {
-
+        return $this -> answers[$ind];
     }
 
     public function getPost()

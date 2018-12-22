@@ -20,7 +20,7 @@ class NewRequestController extends PageController{
 
                 if ($this -> post -> getOwner() -> getId() == $this -> getCurrentUser() -> getId()){
                     echo "<script>alert('You Can't Make Request on Your Own Post.')</script>";
-                    header("Location: index.php");
+                    header("Location: sign-in.php");
                     die();
                 }
 
@@ -38,6 +38,9 @@ class NewRequestController extends PageController{
                 } else {
                     $tempRequest = new Request(-1, $answers, $this -> post);
                     $this -> requestsSQLClient -> saveNewRequest($tempRequest, $this -> currentUser -> getId(), $this -> post -> getOwner() -> getId());
+                    echo "<script>alert('Request Sent Successfully.')</script>";
+                    header("Location: index.php");
+                    die();
                 }
 
             } else if(isset($_GET["postId"])) {

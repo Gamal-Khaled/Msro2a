@@ -7,8 +7,6 @@
 	require_once("SQLClients/class.UsersSQLClient.php");
 	require_once("SQLClients/class.PostsSQLClient.php");
 
-	$_SESSION['currentUser'] = new User(1, "Gamal Khaled", "Gamal@gmail.com", "01000000000", "imgs/client.png");
-
 	$controller = new MainPageController();
 ?>
 

@@ -31,14 +31,17 @@ class MessagesController extends PageController
 
     public function onDeleteMSGClick($msgId)
     {
+        $error = true;
         foreach ($this -> userMessages as $index => $msg) {
             if($msgId == $msg -> getId()){
                 $this -> msgsSQLClient -> deleteMessage($msgId);
                 header("Location: " . $_SERVER["PHP_SELF"]);
+                $error = false;
             }
         }
 
-        header("Location: index.php");
+        if($error)
+            header("Location: index.php");
     }
 }
 ?>

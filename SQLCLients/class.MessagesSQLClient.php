@@ -5,9 +5,9 @@ require_once("classes/class.Message.php");
 
 class MessagesSQLClient extends SQLClient
 {
-    public function saveNewMessage($msg, $userId)
+    public function saveNewMessage($msg, $userId, $msgStyle)
     {
-        
+        $this -> db -> query("INSERT INTO `message`(`userId`, `message`, `msgStyle`) VALUES ($userId, '$msg', '$msgStyle')");
     }
 
     public function deleteMessage($msgId)

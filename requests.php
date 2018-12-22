@@ -33,8 +33,8 @@
 			<label>No Requests Recieved Yet.</label>
 		<?php endif; ?>
 		<?php foreach ($controller -> getRequestsToBeDisplayed() as $request): ?>
-			<div class="request">
-				<label>New Request For <?= $request -> getPost() -> getName() ?> From <?= $request -> getPost() -> getUser() -> getName() ?></label>
+			<div class="request" onclick="onRequestClick(<?= $request -> getId() ?>)">
+				<label>New Request For <?= $request -> getPost() -> getName() ?> From <?= $request -> getPost() -> getOwner() -> getName() ?></label>
 			</div>
 		<?php endforeach; ?>
 	</div>
