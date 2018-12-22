@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2018 at 03:44 PM
+-- Generation Time: Dec 22, 2018 at 05:46 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -33,6 +33,14 @@ CREATE TABLE `answers` (
   `requestId` int(11) NOT NULL,
   `answer` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+
+--
+-- Dumping data for table `answers`
+--
+
+INSERT INTO `answers` (`id`, `requestId`, `answer`) VALUES
+(27, 18, 'hnak'),
+(28, 19, 'hoho');
 
 -- --------------------------------------------------------
 
@@ -80,6 +88,13 @@ CREATE TABLE `posts` (
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `userId`, `imgUrl`, `description`, `name`) VALUES
+(5, 2, 'imgs/item2.jpg', 'Sma3a gmela', 'Sma3a');
+
 -- --------------------------------------------------------
 
 --
@@ -104,6 +119,13 @@ CREATE TABLE `questions` (
   `question` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`id`, `postId`, `question`) VALUES
+(5, 5, 'Da3et fen?');
+
 -- --------------------------------------------------------
 
 --
@@ -116,6 +138,14 @@ CREATE TABLE `requests` (
   `ownerId` int(11) NOT NULL,
   `postOwnerId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+
+--
+-- Dumping data for table `requests`
+--
+
+INSERT INTO `requests` (`id`, `postId`, `ownerId`, `postOwnerId`) VALUES
+(18, 5, 1, 2),
+(19, 5, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -136,7 +166,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fullName`, `phoneNumber`, `email`, `imgUrl`) VALUES
-(1, 'Gamal Khaled', '01000000000', 'Gamal@gmail.com', 'imgs/Client.png');
+(1, 'Gamal Khaled', '01000000000', 'Gamal@gmail.com', 'imgs/Client.png'),
+(2, 'Sayed Hussien', '1111111111', 'Sayed@gmail.com', 'imgs/Client.png');
 
 --
 -- Indexes for dumped tables
@@ -214,7 +245,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `categories`
 --
@@ -229,7 +260,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `postscategories`
 --
@@ -239,17 +270,17 @@ ALTER TABLE `postscategories`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
