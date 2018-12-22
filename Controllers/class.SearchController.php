@@ -15,6 +15,8 @@ class SearchController extends PageController
     private $categorysToSearchFor = [];
 
     public function __construct() {
+        parent::__construct();
+
         $this -> postsSQLClient = new PostsSQLClient();
         $this -> categorySQLClient = new CategorySQLClient();
 

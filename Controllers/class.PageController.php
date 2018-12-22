@@ -12,7 +12,9 @@ class PageController
     {
         $this -> nvgtr = new Navigator();
         if(isset($_SESSION["currentUser"]))
+        {
             $this -> currentUser = $_SESSION["currentUser"];
+        }
     }
 
     public function getCurrentUser()

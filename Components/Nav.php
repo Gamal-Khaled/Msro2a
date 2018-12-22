@@ -6,7 +6,7 @@
     </div>
     <div class="navRight">
         <form method="GET" class="searchForm flexRow" action="search.php">
-            <input type="text" class="searchBar" placeholder="Search" name="searchText" value="<?php if(isset($_SESSION["searchText"])) echo $_SESSION["searchText"] ?>"/>
+            <input type="text" class="searchBar" placeholder="Search Posts" name="searchText" value="<?php if(isset($_SESSION["searchText"])) echo $_SESSION["searchText"] ?>"/>
             <button class="searchIcon"><i class="fas fa-search"></i></button>
         </form>
         <?php if($controller -> isLoggedIn()): ?>
@@ -19,7 +19,7 @@
 </nav>
 <div class="searchForPhones">
     <form method="GET" class="searchForm inFrame" action="search.php">
-        <input type="text" class="searchBar" placeholder="Search" name="searchText"/>
+        <input type="text" class="searchBar" placeholder="Search Posts" name="searchText"/>
         <button class="searchIcon"><i class="fas fa-search"></i></button>
     </form>
 </div>

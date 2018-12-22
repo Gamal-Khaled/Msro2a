@@ -13,6 +13,7 @@ class MainPageController extends PageController
 
     public function __construct()
     {
+        parent::__construct();
         $this -> postsSQLClient = new PostsSQLClient();
     
         $this -> postsToBeDisplayed = $this -> postsSQLClient -> getAllPosts();

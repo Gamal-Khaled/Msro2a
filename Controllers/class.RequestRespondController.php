@@ -6,6 +6,10 @@ class RequestRespondController extends PageController
 {
     public $currentRqst = null;
 
+    public function __construct() {
+        parent::__construct();
+    }
+
     public function onValidClick()
     {
 

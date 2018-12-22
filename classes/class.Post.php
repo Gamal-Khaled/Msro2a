@@ -4,31 +4,33 @@ require_once("SQLClients/class.PostsSQLClient.php");
 
 class Post
 {
-
     private $id = null;
+    private $name = null;
     private $description = null;
     private $imageUrl = null;
     private $owner = null;
 
     private $questions = [];
+    private $questionsIds = [];
     private $categories = [];
 
-    public function __construct($id, $description, $imageUrl, $owner)
+    public function __construct($id, $description, $imageUrl, $owner, $name)
     {
         $this -> id = $id;
         $this -> description = $description;
         $this -> imageUrl = $imageUrl;
         $this -> owner = $owner;
-    }
-
-    public function loadCats()
-    {
-        (new PostsSQLClient()) -> loadCats($this);
+        $this -> name = $name;
     }
 
     public function getId()
     {
         return $this -> id;
+    }
+
+    public function getName()
+    {
+        return $this -> name;
     }
 
     public function getDescription()
@@ -44,6 +46,16 @@ class Post
     public function getQuestions()
     {
         return $this -> questions;
+    }
+
+    public function getQuestionsIds()
+    {
+        return $this -> questionsIds;
+    }
+
+    public function getQuestionId($index)
+    {
+        return $this -> questionsIds[$index];
     }
 
     public function getQuestionByIndex($id)
@@ -67,9 +79,10 @@ class Post
 
     }
 
-    public function addQuestion($question)
+    public function addQuestion($id, $question)
     {
-
+        array_push($this -> questionsIds, $id);
+        array_push($this -> questions, $question);
     }
 
 

@@ -1,4 +1,6 @@
 <?php
+	require_once("classes/class.User.php");
+	
 	session_start();
 
 	require_once("Controllers/class.RequestsController.php");

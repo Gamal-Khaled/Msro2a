@@ -96,12 +96,12 @@
 .post{
 	border: 0.1px solid #EEEEEE;
 	border-bottom: none;
-	height: 300px;
+	height: fit-content;
 	padding: 1px;
 	justify-content: flex-start;
 }
 .post img{
-	height: 100%;
+	height: 300px;
 }
 .postDetails{
 	padding: 20px;

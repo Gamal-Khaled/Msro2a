@@ -6,6 +6,10 @@ class MessagesController extends PageController
 {
     public $userMessages = null;
 
+    public function __construct() {
+        parent::__construct();
+    }
+
     public function onMSGClick($msgIndex)
     {
  
