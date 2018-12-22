@@ -17,10 +17,10 @@ class MessagesController extends PageController
 
         $this -> msgsSQLClient = new MessagesSQLClient();
         
+        $this -> userMessages = $this -> msgsSQLClient -> getUserMsgs($this -> currentUser -> getId());
+        
         if(isset($_GET["delete"]))
             $this -> onDeleteMSGClick($_GET["delete"]);
-
-        $this -> userMessages = $this -> msgsSQLClient -> getUserMsgs($this -> currentUser -> getId());
     }
 
     public function getUserMessages()
@@ -30,8 +30,14 @@ class MessagesController extends PageController
 
     public function onDeleteMSGClick($msgId)
     {
-        $this -> msgsSQLClient -> deleteMessage($msgId);
-        header("Location: " . $_SERVER["PHP_SELF"]);
+        foreach ($this -> userMessages as $index => $msg) {
+            if($msgId == $msg -> getId()){
+                $this -> msgsSQLClient -> deleteMessage($msgId);
+                header("Location: " . $_SERVER["PHP_SELF"]);
+            }
+        }
+
+        header("Location: index.php");
     }
 }
 ?>

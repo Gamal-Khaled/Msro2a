@@ -16,13 +16,9 @@ class CategorySQLClient extends SQLClient
         $result = $result -> fetch_all();
 
         $categories = [];
-        $categoriesNames = [];
 
         foreach ($result as $row) {
-            if(!in_array($row[2], $categoriesNames)){
-                array_push($categories, new Category($row[0], $row[2]));
-                array_push($categoriesNames, $row[2]);
-            }
+            array_push($categories, new Category($row[0], $row[1]));
         }
 
         return $categories;
@@ -31,9 +27,9 @@ class CategorySQLClient extends SQLClient
     public function getCategoryById($catId)
     {
         $result = $this -> db -> query("SELECT * FROM `categories` WHERE id = $catId");
-        $result = $result -> fetch_assoc();
+        $result = $result -> fetch_all();
 
-        return new Category($result["id"], $result["category"]);
+        return new Category($result[0][0], $result[0][1]);
     }
 
     public function searchCategoriesByName($searcText)
@@ -42,13 +38,9 @@ class CategorySQLClient extends SQLClient
         $result = $result -> fetch_all();
 
         $categories = [];
-        $categoriesNames = [];
 
         foreach ($result as $row) {
-            if(!in_array($row[2], $categoriesNames)){
-                array_push($categories, new Category($row[0], $row[2]));
-                array_push($categoriesNames, $row[2]);
-            }
+            array_push($categories, new Category($row[0], $row[1]));
         }
 
         return $categories;

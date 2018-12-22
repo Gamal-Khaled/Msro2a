@@ -14,7 +14,8 @@ class PostsSQLClient extends SQLClient
 
     public function deletePost($postId)
     {
-        
+        $this -> db -> query("DELETE FROM `postscategories` WHERE postId = $postId");
+        $this -> db -> query("DELETE FROM `posts` WHERE id = $postId");
     }
 
     public function editPostImage($postId, $newImageUrl)
@@ -55,16 +56,17 @@ class PostsSQLClient extends SQLClient
     {
         if(count($categories))
         {
-            $query = 'SELECT DISTINCT * FROM `posts`, `users`, `categories` 
+            $query = 'SELECT DISTINCT * FROM `posts`, `users`, `categories`, `postscategories`
             WHERE posts.userId = users.id 
-            and categories.postId = posts.id 
+            and categories.id = postscategories.categoryId 
+            and posts.id = postscategories.postId 
             and categories.category like "%' . $categories[0] -> getName() . '%"';
 
             for ($i = 1; $i < count($categories); $i++) { 
                 $query = $query . " or categories.category like '%" . $categories[$i] -> getName() . "%'";
             }
 
-            $query = $query . 'GROUP BY(posts.id)';
+            $query = $query . ' GROUP BY(posts.id)';
         }
         else{
             $query = 'SELECT DISTINCT * FROM `posts`, `users` WHERE posts.userId = users.id';
@@ -87,7 +89,20 @@ class PostsSQLClient extends SQLClient
 
     public function getUserPosts($user)
     {
+        $query = "SELECT * FROM `posts` WHERE posts.userId = " . $user -> getId();
+        $result = ($this -> db -> query($query));
+        $result = $result -> fetch_all();
         
+        $posts = [];
+        foreach ($result as $row) {
+            $postTemp = new Post($row[0], $row[3], $row[2], $user, $row[4]);
+            
+            $this -> loadCats($postTemp);
+            $this -> loadQuestions($postTemp);
+            array_push($posts, $postTemp);
+        }
+
+        return $posts;
     }
 
     public function getPostById($postId)
@@ -107,14 +122,33 @@ class PostsSQLClient extends SQLClient
 
     public function loadCats($post)
     {
-        $query = "SELECT * FROM `categories` WHERE postId = ". $post -> getId();
+        $query = "SELECT categoryId FROM `postscategories` WHERE postId = ". $post -> getId();
         $result = ($this -> db -> query($query));
         $result = $result -> fetch_all();
 
-        if($result != null)
+        $categories = [];
+        if(count($result) != 0)
         {
             foreach ($result as $row) {
-                $post -> addCategory(new Category($row[0], $row[2]));
+                array_push($categories, $row[0]);
+            }
+        }
+
+        if(count($categories) != 0)
+        {
+            $query = "SELECT * FROM `categories` WHERE id = " . $categories[0];
+            for ($i = 1; $i < count($categories); $i++) { 
+                $query .= " or id = " . $categories[$i];
+            }
+
+            $result = ($this -> db -> query($query));
+            $result = $result -> fetch_all();
+        }
+
+        if(count($result) != 0)
+        {
+            foreach ($result as $row) {
+                $post -> addCategory(new Category($row[0], $row[1]));
             }
             return;
         }

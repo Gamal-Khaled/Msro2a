@@ -38,7 +38,12 @@ class User
 
     public function getEmail()
     {
-        
+        return $this -> email;
+    }
+
+    public function getPhoneNumber()
+    {
+        return $this -> phoneNumber;
     }
 
     public function getPostsId()
@@ -57,11 +62,6 @@ class User
     }
 
     public function removePost($ind)
-    {
-        
-    }
-
-    public function getPhoneNumber()
     {
         
     }
