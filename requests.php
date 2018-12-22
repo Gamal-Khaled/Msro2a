@@ -29,33 +29,14 @@
 	<!-- Content Start -->
 	<div class="contentContainer inFrame">
 		<h1 class="contentTitle">Requests</h1>
-		<div class="request">
-			<label>New Request For {Post Name} From {al3amel alrequest Name}</label>
-		</div>
-		<div class="request">
-			<label>New Request For {Post Name} From {al3amel alrequest Name}</label>
-		</div>
-		<div class="request">
-			<label>New Request For {Post Name} From {al3amel alrequest Name}</label>
-		</div>
-		<div class="request">
-			<label>New Request For {Post Name} From {al3amel alrequest Name}</label>
-		</div>
-		<div class="request">
-			<label>New Request For {Post Name} From {al3amel alrequest Name}</label>
-		</div>
-		<div class="request">
-			<label>New Request For {Post Name} From {al3amel alrequest Name}</label>
-		</div>
-		<div class="request">
-			<label>New Request For {Post Name} From {al3amel alrequest Name}</label>
-		</div>
-		<div class="request">
-			<label>New Request For {Post Name} From {al3amel alrequest Name}</label>
-		</div>
-		<div class="request">
-			<label>New Request For {Post Name} From {al3amel alrequest Name}</label>
-		</div>
+		<?php if(count($controller -> getRequestsToBeDisplayed()) == 0): ?>
+			<label>No Requests Recieved Yet.</label>
+		<?php endif; ?>
+		<?php foreach ($controller -> getRequestsToBeDisplayed() as $request): ?>
+			<div class="request">
+				<label>New Request For <?= $request -> getPost() -> getName() ?> From <?= $request -> getPost() -> getUser() -> getName() ?></label>
+			</div>
+		<?php endforeach; ?>
 	</div>
 	<!-- Content End -->
 

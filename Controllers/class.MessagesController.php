@@ -12,6 +12,7 @@ class MessagesController extends PageController
         parent::__construct();
 
         if(!$this -> isLoggedIn()){
+            echo "<script>alert('Please Log-in First.')</script>";
             header("Location: index.php");
         }
 
