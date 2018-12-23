@@ -4,12 +4,23 @@ require_once("SQLClients/class.SQLClient.php");
 require_once("classes/class.User.php");
 require_once("classes/class.Category.php");
 
+
+
 class UsersSQLClient extends SQLClient
 {
+
+
+
     public function saveNewAccount($newUser)
     {
-        
-    }
+       $query="INSERT INTO users (fullName,phoneNumber,email,password) VALUES('".$newUser ->getName()."','".$newUser ->getPhoneNumber()."','".$newUser ->getEmail()."','".$newUser ->getPassword()."')";
+         $this -> db -> query($query);
+
+
+
+
+     }
+ 
 
     public function deleteUserAccount($userId)
     {
@@ -58,4 +69,5 @@ class UsersSQLClient extends SQLClient
         return null;
     }
 }
+
 ?>
