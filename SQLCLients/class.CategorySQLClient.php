@@ -7,7 +7,10 @@ class CategorySQLClient extends SQLClient
 {
     public function saveNewCategory($category)
     {
-        
+        $this -> db -> query("INSERT INTO `categories`(`Category`) VALUES ('" . $category . "')");
+
+        $catId = $this -> db -> query("SELECT id FROM `categories` ORDER BY id DESC LIMIT 1");
+        return ($catId -> fetch_assoc())["id"];
     }
 
     public function getAllCategories()

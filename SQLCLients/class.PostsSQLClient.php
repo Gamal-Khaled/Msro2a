@@ -9,7 +9,32 @@ class PostsSQLClient extends SQLClient
 {
     public function saveNewPost($post, $userId)
     {
-        
+        $this -> db -> query("INSERT INTO `posts`(`userId`, `imgUrl`, `description`, `name`) VALUES (
+            $userId, '
+            " . $post -> getImg() . "', '
+            " . $post -> getDescription() . "', '
+            " . $post -> getName() . "'
+        )");
+
+        $postId = $this -> db -> query("SELECT id FROM `posts` ORDER BY id DESC LIMIT 1");
+        $postId = ($postId -> fetch_assoc())["id"];
+
+        foreach ($post -> getQuestions() as $q) {
+            $this -> addNewQuestion($q, $postId);
+        }
+        foreach ($post -> getCategories() as $c) {
+            $this -> addNewCategory($c, $postId);
+        }
+    }
+
+    public function addNewQuestion($question, $postId)
+    {
+        $this -> db -> query("INSERT INTO `questions`(`postId`, `question`) VALUES ($postId, '$question')");
+    }
+
+    public function addNewCategory($category, $postId)
+    {
+        $this -> db -> query("INSERT INTO `postscategories`(`postId`, `categoryId`) VALUES ($postId, '$category')");
     }
 
     public function deletePost($postId)

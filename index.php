@@ -4,8 +4,8 @@
 	session_start();
 
 	require_once("Controllers/class.MainPageController.php");
-	require_once("SQLClients/class.UsersSQLClient.php");
-	require_once("SQLClients/class.PostsSQLClient.php");
+
+	$_SESSION["currentUser"] = new User(2, "hi", "g", "0", "imgs/client.png");
 
 	$controller = new MainPageController();
 ?>
@@ -62,7 +62,7 @@
 						</div>
 					</div>
 				</div>
-				<?php if ($post -> getOwner() -> getId() != $controller -> getCurrentUser() -> getId()):?>
+				<?php if (!$controller -> isloggedIn() || $post -> getOwner() -> getId() != $controller -> getCurrentUser() -> getId()):?>
 					<div class="flexRow postButtons" onclick="onMineButtonClick(<?=$post -> getId()?>, <?= $controller -> isLoggedIn() ? '1' : '0' ?>)"><p>It's Mine</p></div>
 				<?php endif; ?>
 			</div>
