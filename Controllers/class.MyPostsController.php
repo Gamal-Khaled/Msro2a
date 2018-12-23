@@ -17,7 +17,7 @@ class MyPostsController extends PageController
 
         if(!$this -> isLoggedIn()){
             echo "<script>alert('Please Log-in First.')</script>";
-            header("Location: logIn.php");
+            header("Location: signIn.php");
         }
 
         $this -> postsSQLClient = new PostsSQLClient();

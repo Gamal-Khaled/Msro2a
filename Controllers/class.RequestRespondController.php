@@ -45,7 +45,7 @@ class RequestRespondController extends PageController
                 $this -> msgsSQLClient -> saveNewMessage($msg, $this -> currentRqst -> getPost() -> getOwner() -> getId(), $msgStyle);
                 $this -> requestsSQLClient -> deleteRequest($_GET["requestId"]);
 
-                header("Location: messages.php");
+                header("Location: requests.php");
             }
         }
         else

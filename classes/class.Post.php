@@ -85,6 +85,10 @@ class Post
         array_push($this -> questions, $question);
     }
 
+    public function addNewQuestion($question)
+    {
+        array_push($this -> questions, $question);
+    }
 
     public function getCategories()
     {
@@ -114,6 +118,15 @@ class Post
     public function removeCategory($ind)
     {
 
+    }
+
+    public function hasCategory($catId)
+    {
+        foreach ($this -> categories as $category) {
+            if($category -> getId() == $catId)
+                return true;
+        }
+        return false;
     }
 }
 ?>

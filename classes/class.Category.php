@@ -20,5 +20,10 @@ class Category
     {
         return $this -> categoryName;
     }
+
+    public function setId($id)
+    {
+        $this -> id = $id;
+    }
 }
 ?>

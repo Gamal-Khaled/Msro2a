@@ -9,7 +9,32 @@ class PostsSQLClient extends SQLClient
 {
     public function saveNewPost($post, $userId)
     {
-        
+        $this -> db -> query("INSERT INTO `posts`(`userId`, `imgUrl`, `description`, `name`) VALUES (
+            $userId, '
+            " . trim($post -> getImg()) . "', '
+            " . trim($post -> getDescription()) . "', '
+            " . trim($post -> getName()) . "'
+        )");
+
+        $postId = $this -> db -> query("SELECT id FROM `posts` ORDER BY id DESC LIMIT 1");
+        $postId = ($postId -> fetch_assoc())["id"];
+
+        foreach ($post -> getQuestions() as $q) {
+            $this -> addNewQuestion($q, $postId);
+        }
+        foreach ($post -> getCategories() as $c) {
+            $this -> addNewCategory($c, $postId);
+        }
+    }
+
+    public function addNewQuestion($question, $postId)
+    {
+        $this -> db -> query("INSERT INTO `questions`(`postId`, `question`) VALUES ($postId, '$question')");
+    }
+
+    public function addNewCategory($category, $postId)
+    {
+        $this -> db -> query("INSERT INTO `postscategories`(`postId`, `categoryId`) VALUES ($postId, '$category')");
     }
 
     public function deletePost($postId)
@@ -18,19 +43,41 @@ class PostsSQLClient extends SQLClient
         $this -> db -> query("DELETE FROM `posts` WHERE id = $postId");
     }
 
+    public function editPostName($postId, $newName)
+    {
+        $this -> db -> query("UPDATE `posts` SET `name`= '$newName' WHERE id = $postId");
+    }
+
     public function editPostImage($postId, $newImageUrl)
     {
-        
+        $this -> db -> query("UPDATE `posts` SET `imgUrl`= '$newImageUrl' WHERE id = $postId");
     }
 
     public function editPostDescription($postId, $newDes)
     {
-        
+        $this -> db -> query("UPDATE `posts` SET `description`= '$newDes' WHERE id = $postId");
     }
 
     public function editPostQuestions($postId, $newQuestions)
     {
-        
+        $query = "DELETE FROM `questions` WHERE postId = $postId;";
+        $this -> db -> query($query);
+
+        foreach ($newQuestions as $q) {
+            $query = "INSERT INTO `questions`(`postId`, `question`) VALUES ($postId, '$q');";
+            $this -> db -> query($query);
+        }
+    }
+
+    public function editPostCategories($postId, $newCategories)
+    {
+        $query = "DELETE FROM `postscategories` WHERE postId = $postId;";
+        $this -> db -> query($query);
+
+        foreach ($newCategories as $c) {
+            $query = "INSERT INTO `postscategories`(`postId`, `categoryId`) VALUES ($postId, $c);";
+            $this -> db -> query($query);
+        }
     }
 
     public function getAllPosts()
