@@ -10,7 +10,11 @@
             <button class="searchIcon"><i class="fas fa-search"></i></button>
         </form>
         <?php if($controller -> isLoggedIn()): ?>
-            <label class="welcome">Hi <?= $controller -> getCurrentUser() -> getName() ?>!</label>
+            <form action="index.php" method="POST">
+                <input type="hidden" value="1" name="signout">
+                <label class="welcome">Hi <?= $controller -> getCurrentUser() -> getName() ?>!</label>
+                <input type="submit" value="Sign out" class="signIn_Up_Button">
+            </form>
         <?php else: ?>
             <button class="signIn_Up_Button"><a href="signIn.php">Sign In</a></button>
             <button class="signIn_Up_Button"><a href="signUp.php">Sign Up</a></button>

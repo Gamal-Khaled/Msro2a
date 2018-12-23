@@ -5,8 +5,6 @@
 
 	require_once("Controllers/class.MainPageController.php");
 
-	$_SESSION["currentUser"] = new User(1, "Gamal Khaled", "Gamal@gmail.com", "01000000000", "imgs/client.png");
-
 	$controller = new MainPageController();
 ?>
 
