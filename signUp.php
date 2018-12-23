@@ -50,13 +50,13 @@ require_once("classes/class.User.php");
 <hr>
 
 <div>
-<label for "fullname" style="margin-left: 20px" ><b>Full name</b></label><br>
+<label for="fullname" style="margin-left: 20px" ><b>Full name</b></label><br>
 <input type="text"  id="fullname" name="fullname" required placeholder="fullname"  onblur="namevalidation()"  ><br>
 <label id="namevalidation" ></label>
 </div>
 
 <div>
-<label for "Email"  name="emaillabel"  ><b>Email</b></label>
+<label for="Email"  name="emaillabel"  ><b>Email</b></label>
 <input type="text"  id="Email" name="Email" required placeholder="e-mail"  onblur="checkemailvalidation()">
 <label id="emailvalidation" ></label>
 </div>

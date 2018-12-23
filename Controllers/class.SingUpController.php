@@ -12,105 +12,54 @@ require_once("Controllers/class.PageController.php");
 
 class SingUpController extends PageController
 {
-<<<<<<< HEAD
 
 
-	 public function __construct()
+	public function __construct()
 	{
-		$username=$email=$password=$confirmpassword=$phonenumber="";
 		parent::__construct();
 
-
-
-
-
-
-
-		if(isset($_POST['Sign-up'])){
-
-
-
-
-
-if (empty($_POST["fullname"])) {
-$nameError = "Name is required";
-} else {
-
-// check name only contains letters and whitespace
-if (preg_match("/^[a-zA-Z ]*$/",$_POST["fullname"])) {
-$username =$_POST["fullname"];
-}
-}
-if (empty($_POST["Email"])) {
-$emailError = "Email is required";
-} else {
-
-// check if e-mail address syntax is valid or not
-if (filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)) {
-$email=$_POST["Email"];
-}
-}
-
-if($_POST['password']>= 6 &&$_POST['password'] !=$_POST['fullname']  &&$_POST['password']==$_POST['Repeatepassword'])
-			{
-
-					$password=$_POST['password'];
-			}
-
-			if( substr( $_POST['phonenumber'], 0, 2 ) === "01" && strlen($_POST['phonenumber']) ==11)
-			{
-				$phonenumber=$_POST['phonenumber'];
-			}
-
-
-	
-
-$user=new User(" ","$username","$email","$phonenumber","","$password");
-
-$this ->createNewAccount($user);
-
-
-}
+		if($this -> isLoggedIn())
+			header("Location: logIn.php");
 
 		
-
-
-	
-
-
-
-
-	
-
-
 	}
-
-
-
-=======
-    public function __construct() {
-        parent::__construct();
-    }
->>>>>>> 24b3f08baf028a17267add6f014f8004d031e5f8
 
     public function validateUserData()
     {
+		$usersqlclient= new UsersSQLClient();
 
+		$valid = true;
+
+		$valid = $valid && isset($_POST["fullname"]) && ($_POST["fullname"] != "");
+
+		$valid = $valid && isset($_POST["fullname"]) && ($_POST["fullname"] != "");
+
+		$valid = $valid && isset($_POST["Email"]) && ($_POST["Email"] != "") && (strpos($_POST["Email"], "@") !== false) && (strpos($_POST["Email"], ".") !== false);
+
+		$valid = $valid && 
+			isset($_POST["password"]) && 
+			($_POST["password"] != "") && 
+			isset($_POST["Repeatepassword"]) && 
+			($_POST["password"] === $_POST["Repeatepassword"])
+		;
+
+		$valid = $valid && isset($_POST["phonenumber"]) && (strlen($_POST["phonenumber"]) === 11) && (substr($_POST["phonenumber"], 0, 2) === "01");
+
+		if($valid){
+			$valid = $valid && ($usersqlclient -> isPhoneNumberExists($_POST["phonenumber"]));
+			$valid = $valid && ($usersqlclient -> isEmailExists($_POST["Email"]));
+		}
+		
+
+		if($valid)
+			$this -> createNewAccount(new User(0,$username,$email,$phonenumber,"",$password));
     }
 
     public function createNewAccount($user)
     {
-    		$usersqlclient= new UsersSQLClient();
-    		
-    		$usersqlclient->saveNewAccount($user);
+		$usersqlclient= new UsersSQLClient();
+		
+		$usersqlclient->saveNewAccount($user);
     }
 }
-
-
-
-
-
 ?>
-	
-
-	

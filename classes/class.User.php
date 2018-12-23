@@ -41,38 +41,22 @@ class User
     public function getEmail()
     {
         return $this -> email;
-<<<<<<< HEAD
-        
-=======
->>>>>>> 24b3f08baf028a17267add6f014f8004d031e5f8
     }
 
     public function getPhoneNumber()
     {
         return $this -> phoneNumber;
-<<<<<<< HEAD
     }
 
-    
-
-     public function getPassword()
+    public function getPassword()
     {
         return $this -> password;
     }
 
-    
-
-    public function getPostIdByIndex( integer $ind)
-=======
+    public function getPostIdByIndex( integer $ind){
     }
 
     public function getPostsId()
->>>>>>> 24b3f08baf028a17267add6f014f8004d031e5f8
-    {
-        
-    }
-
-    public function getPostIdByIndex($ind)
     {
         
     }
@@ -82,14 +66,10 @@ class User
         
     }
 
-<<<<<<< HEAD
-    
-=======
     public function removePost($ind)
     {
         
     }
->>>>>>> 24b3f08baf028a17267add6f014f8004d031e5f8
 
     public function getImg()
     {
