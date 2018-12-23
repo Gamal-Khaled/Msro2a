@@ -26,7 +26,7 @@ class UsersSQLClient extends SQLClient
 
         if($result)
         {
-            return new User($result["userId"], $result["fullName"], $result["email"], $result["phoneNumber"], $result["imgUrl"]);
+            return new User($result["id"], $result["fullName"], $result["email"], $result["phoneNumber"], $result["imgUrl"]);
         }
         
         return null;
