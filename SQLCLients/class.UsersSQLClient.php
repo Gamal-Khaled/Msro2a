@@ -6,12 +6,19 @@ require_once("classes/class.User.php");
 
 require_once("classes/class.Category.php");
 
+
+
 class UsersSQLClient extends SQLClient
 {
+
+
+
     public function saveNewAccount($newUser)
     {
-        
+       $query="INSERT INTO users (fullName,phoneNumber,email,password) VALUES('".$newUser ->getName()."','".$newUser ->getPhoneNumber()."','".$newUser ->getEmail()."','".$newUser ->getPassword()."')";
+        $this -> db -> query($query);
     }
+ 
 
     public function deleteUserAccount($userId)
     {
@@ -68,5 +75,20 @@ class UsersSQLClient extends SQLClient
 
         return null;
     }
+
+    public function isPhoneNumberExists($phone)
+    {
+        $result = $this -> db -> query("SELECT count(id) FROM `users` WHERE phoneNumber = '$phone'");
+
+        return ((($result -> fetch_all())[0])[0]) !== 0;
+    }
+
+    public function isEmailExists($Email)
+    {
+        $result = $this -> db -> query("SELECT count(id) FROM `users` WHERE email = '$Email'");
+
+        return ((($result -> fetch_all())[0])[0]) !== 0;
+    }
 }
+
 ?>

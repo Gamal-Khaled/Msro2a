@@ -11,19 +11,21 @@ class User
     private $email = null;
     private $phoneNumber = null;
     private $imgUrl = null;
+    private $password = null;
 
     private $postsId = null;
     private $msgs = [];
     private $sentRequestsId = null;
     private $recievedRequestsId = null;
 
-    public function __construct($id, $name, $email, $phoneNumber, $imgUrl)
+    public function __construct($id, $name, $email, $phoneNumber, $imgUrl,$password)
     {
         $this -> id = $id;
         $this -> fullName = $name;
         $this -> email = $email;
         $this -> phoneNumber = $phoneNumber;
         $this -> imgUrl = $imgUrl;
+        $this -> password=$password;
     }
 
     public function getId()
@@ -46,12 +48,15 @@ class User
         return $this -> phoneNumber;
     }
 
-    public function getPostsId()
+    public function getPassword()
     {
-        
+        return $this -> password;
     }
 
-    public function getPostIdByIndex($ind)
+    public function getPostIdByIndex( integer $ind){
+    }
+
+    public function getPostsId()
     {
         
     }
