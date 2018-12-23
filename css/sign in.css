@@ -10,7 +10,7 @@
 
 ul { display:table; margin:0 auto;}
 
-input[type=button], input[type=submit] 
+input[type=button], input[type=submit] ,button
 {
   background-color:#00477E;
   color: darkblue;

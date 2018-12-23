@@ -1,5 +1,5 @@
 <?php
-//	require_once("classes/class.User.php");
+	require_once("classes/class.User.php");
 	
 	session_start();
 
@@ -15,10 +15,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/sign in.css">
+    <link rel="stylesheet" type="text/css" href="css/nav.css">s
 
     
 </head>
 <body>
+    
+    <?php require_once("Components/Nav.php") ?>
     
 <!--....-->
 	<nav class="inFrame">
@@ -65,7 +68,7 @@
         <!--New user-->
         <li>&nbsp;</li>
         <li>
-            <a href="blabla"> New User? </a>
+            <a href="signUp.php" name="newuser"> New User? </a>
         </li>
         
         
@@ -76,28 +79,34 @@
             <input type="submit" name="submit" value="Sign in"/><br>
             
         </li>
+              
             
+            <li>&nbsp;</li>
+        <li>&nbsp;</li>
+        </div>
             
+    </ul>
+
+            
+    </form>
             
         
         <!--Cancel-->
-<!--         <li>&nbsp;</li>-->
-<!--        <li>-->
-<!--            <input type="button" name="cancel" value="Cancel"/><br>-->
-<!--        </li>-->
-            
-        <li>&nbsp;</li>
-        <li>&nbsp;</li>
-        </div>
+    <ul style="list-style-type:none">
+         <li>&nbsp;</li>
+        <li>
+            <input type="button" value="Cancel" onclick="location.href = 'index.php';"/><br>
+        </li>
+    </ul>    
+      
         
         
         <li>&nbsp;</li>
         <li>&nbsp;</li>
-    </ul>
-
+    
 
     
-</form>
+
 <!--....-->
 
     </body>

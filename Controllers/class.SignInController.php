@@ -31,12 +31,13 @@ class SignInController extends PageController
             {
                 echo "<script>alert('Successfull')</script>";   
                 $_SESSION["currentUser"] = $USERR;
+                header("Location: index.php");
             }
             else{
                 echo "<script>alert('You Are Not Registered OR You Entered The Email or Password Wrongly')</script>";            
             }
         }
-        
+   
         
     }
 
