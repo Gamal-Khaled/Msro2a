@@ -13,7 +13,12 @@ class MainPageController extends PageController
 
     public function __construct()
     {
+        if(isset($_POST["signout"]) && $_POST["signout"] == "1"){
+            $_SESSION["currentUser"] = null;
+        }
+
         parent::__construct();
+
         $this -> postsSQLClient = new PostsSQLClient();
     
         $this -> postsToBeDisplayed = $this -> postsSQLClient -> getAllPosts();

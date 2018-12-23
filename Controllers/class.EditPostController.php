@@ -36,7 +36,6 @@ class EditPostController extends PageController
             $this -> postId = $_GET['postToEdit'];
         }
         elseif ($_POST) {
-            echo "<script>console.log(".json_encode($_POST).")</script>";
             if(isset($_POST["postId"])){
                 if((int)$_POST["postId"] != -1)
                     $this -> loadPost($_POST["postId"]);
@@ -113,7 +112,36 @@ class EditPostController extends PageController
                         }
                         $this -> postsSQLClient -> editPostQuestions($this -> currentPost -> getId(), array_merge($questions, $newQuestions));
                         $this -> postsSQLClient -> editPostCategories($this -> currentPost -> getId(), array_merge($categories, $newCats));
-                        
+
+                        //uploading the img
+                        $target_dir = "imgs/";
+                        $target_file = $target_dir . basename($_FILES["postImg"]["name"]);
+                        $uploadOk = 1;
+                        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                        // Check if image file is a actual image or fake image
+                        if(isset($_POST["submit"])) {
+                            $check = getimagesize($_FILES["postImg"]["tmp_name"]);
+                            if($check !== false) {
+                                $uploadOk = 1;
+                            } else {
+                                $uploadOk = 0;
+                            }
+                        }
+                        // Check if file already exists
+                        if (file_exists($target_file)) {
+                            $uploadOk = 0;
+                        }
+                        // Allow certain file formats
+                        if($imageFileType != "jpg" && $imageFileType != "png") {
+                            $uploadOk = 0;
+                        }
+                        // Check if $uploadOk is set to 0 by an error
+                        if ($uploadOk == 1) {
+                            // if everything is ok, try to upload file
+                            move_uploaded_file($_FILES["postImg"]["tmp_name"], $target_file);
+                            $this -> postsSQLClient -> editPostImage($this -> currentPost -> getId(), $target_file);
+                        }
+
                         header("Location: MyPosts.php");
                     }
                 }
