@@ -102,6 +102,7 @@
 }
 .post img{
 	height: 300px;
+	width: 300px;
 }
 .postDetails{
 	padding: 20px;
@@ -120,7 +121,7 @@
 }
 .clientImg{
 	height: 50px !important;
-	width: 50px;
+	width: 50px !important;
 	margin-right: 5px;
 }
 .post > .flexColumn{

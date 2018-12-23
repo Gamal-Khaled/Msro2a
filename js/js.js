@@ -1,10 +1,4 @@
 $(document).ready(function(){
-    //Onresize
-    document.getElementsByTagName('body')[0].onresize = function(){
-        $(".post > img").height($(".post > img").width());
-    }
-    $(".post > img").height($(".post > img").width());
-
     //Drawer Code
     let drawerAnimationTime = 200;
     const openDrawer = () => {
