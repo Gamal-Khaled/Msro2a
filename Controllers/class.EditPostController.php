@@ -141,5 +141,6 @@ class EditPostController extends PageController
         $this -> currentPost = $this -> postsSQLClient -> getPostById($postId);
         $this -> postId = $this -> currentPost -> getId();
     }
+
 }
 ?>
