@@ -34,7 +34,8 @@ class SignInController extends PageController
                 header("Location: index.php");
             }
             else{
-                echo "<script>alert('You Are Not Registered OR You Entered The Email or Password Wrongly')</script>";            
+                echo "<script>alert('You Are Not Registered OR You Entered The Email or Password Wrongly')</script>";
+                header("Location: signIn.php");
             }
         }
    
