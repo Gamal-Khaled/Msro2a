@@ -31,7 +31,7 @@
 	<!-- Content Start -->
 	<div class="contentContainer inFrame">
 		<div class="post flexRow userAccount">
-			<img src="imgs/img_avatar3.png" class="profilePic">
+			<img src="<?= $controller -> getCurrentUser() -> getImg() ?>" class="profilePic">
 			<div class="flexColumn">
 				<div class="flexColumn postDetails">
 					<div class="postOwner">

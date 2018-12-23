@@ -55,7 +55,7 @@
 		<?php foreach ($controller -> getPosts() as $post): ?>
 			<div class="flexColumn">
 				<div class="post flexRow">
-					<img src="imgs/item1.jpg">
+					<img src="<?= $post -> getImg() ?>">
 					<div class="flexColumn">
 						<div class="flexColumn postDetails">
 							<div class="postOwner">
@@ -79,7 +79,7 @@
 						</div>
 					</div>
 				</div>
-				<?php if ($post -> getOwner() -> getId() != $controller -> getCurrentUser() -> getId()):?>
+				<?php if (!$controller -> isLoggedIn() || $post -> getOwner() -> getId() != $controller -> getCurrentUser() -> getId()):?>
 					<div class="flexRow postButtons" onclick="onMineButtonClick(<?=$post -> getId()?>, <?= $controller -> isLoggedIn() ? '1' : '0' ?>)"><p>It's Mine</p></div>
 				<?php endif; ?>
 			</div>

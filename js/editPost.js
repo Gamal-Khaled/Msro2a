@@ -47,10 +47,14 @@ $($(".searchIcon")[0]).click(function(e){
     }
 })
 
+let qcounter = 1;
+let ccounter = 0;
 //Add New Question Code
-$("#addNewQ").click(function(){
-    $(".question:last-of-type").after($('<input type="text" class="question newQuestion">'));
+$("#addNewQ").click(function(e){
+    e.preventDefault();
+    $(".question:last-of-type").after($('<input type="text" class="question newQuestion" name="newQ' + qcounter++ + '">'));
 });
-$("#addNewC").click(function(){
-    $(".category:last-of-type").after($('<div class="flexRow category"><input type="checkbox" name="cat1" value="cat1"><label><input type="text"></label></div>'));
+$("#addNewC").click(function(e){
+    e.preventDefault();
+    $(".category:last-of-type").after($('<div class="flexRow category"><input type="checkbox" checked name="newC' + ccounter + '"><label><input type="text" name="newC' + ccounter++ + 'Label"></label></div>'));
 });

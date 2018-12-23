@@ -26,64 +26,55 @@
 	<?php require_once("Components/Drawer.php") ?>
 
 	<!-- Content Start -->
-	<div class="contentContainer inFrame">
+	<form class="contentContainer inFrame" action="editPost.php" method="POST" enctype="multipart/form-data">
 		<div class="flexColumn">
 			<div class="post flexRow">
-				<img src="imgs/item1.jpg">
+				<img src="<?= $controller -> getCurrentPost() -> getImg() ?>">
 				<div class="flexColumn">
 					<div class="flexColumn postDetails">
+						<input type="hidden" name="postId" value="<?= $controller -> postId ?>">
+						<div>
+							<label>Name</label> <br>
+							<input type="text" name="name" value="<?= $controller -> getCurrentPost() -> getName() ?>" class="name">
+						</div>
 						<div>
 							<label>Description</label> <br>
-							<textarea name="desc" class="postDesc">IPhone XS l2eto fe alcity mrme, s7bo 8be awe bsra7a y3ne hwa da3 mno 1000$ mn8er m ya5od balo??</textarea>
+							<textarea name="desc" class="postDesc"><?= $controller -> getCurrentPost() -> getDescription() ?></textarea>
 						</div>
 						<div>
 							<label>Change Photo</label>
-							<input type="file" accept=".png,.jpg" class="newImg">
+							<input type="file" accept=".png,.jpg" class="newImg" name="postImg">
 						</div>
 						<div>
 							<label>Categories</label> <br>
 							<div class="allCats flexColumn">
-								<div class="flexRow category">
-									<input type="checkbox" name="cat1" value="cat1">
-									<label>Mobiles</label>
-								</div>
-								<div class="flexRow category">
-									<input type="checkbox" name="cat1" value="cat1">
-									<label>Mobiles</label>
-								</div>
-								<div class="flexRow category">
-									<input type="checkbox" name="cat1" value="cat1">
-									<label>Mobiles</label>
-								</div>
-								<div class="flexRow category">
-									<input type="checkbox" name="cat1" value="cat1">
-									<label>Mobiles</label>
-								</div>
-								<div class="flexRow category">
-									<input type="checkbox" name="cat1" value="cat1">
-									<label>Mobiles</label>
-								</div>
+								<?php foreach ($controller -> getAllCategories() as $category): ?>
+									<div class="flexRow category">
+										<input type="checkbox" name="cat<?= $category -> getId() ?>" <?= ($controller -> getCurrentPost() -> hasCategory($category -> getId()) ? "checked" : "") ?>>
+										<label><?= $category -> getName() ?></label>
+									</div>
+								<?php endforeach; ?>
 								<button class="add" id="addNewC">Add New Category</button>
 							</div>
 						</div>
 						<div>
 							<label>Questions</label> <br>
-							<input type="text" class="question" value="Question 1?">
-							<input type="text" class="question" value="Question 1?">
-							<input type="text" class="question" value="Question 1?">
-							<input type="text" class="question" value="Question 1?">
-							<input type="text" class="question" value="Question 1?">
+							<?php if ($controller -> postId == -1): ?>
+								<input type="text" class="question" name="newQ0">
+							<?php endif; ?>
+							<?php foreach ($controller -> getCurrentPost() -> getQuestions() as $index => $question): ?>
+								<input type="text" class="question" value="<?= $question ?>" name="qus<?= $controller -> getCurrentPost() -> getQuestionId($index) ?>">
+							<?php endforeach; ?>
 							<button class="add" id="addNewQ">Add New Question</button>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="flexRow">
-				<div class="flexRow postButtons editButton"><p>Save Post</p></div>
-				<div class="flexRow postButtons"><p>Delete Post</p></div>
+				<input type="submit" class="flexRow postButtons editButton" value="Save">
 			</div>
 		</div>
-	</div>
+	</form>
 	<!-- Content End -->
 
 	<script type="text/javascript" src="js/editPost.js"></script>
