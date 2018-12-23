@@ -12,6 +12,7 @@ require_once("Controllers/class.PageController.php");
 
 class SingUpController extends PageController
 {
+<<<<<<< HEAD
 
 
 	 public function __construct()
@@ -86,6 +87,11 @@ $this ->createNewAccount($user);
 
 
 
+=======
+    public function __construct() {
+        parent::__construct();
+    }
+>>>>>>> 24b3f08baf028a17267add6f014f8004d031e5f8
 
     public function validateUserData()
     {

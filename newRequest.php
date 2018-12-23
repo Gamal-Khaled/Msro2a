@@ -1,9 +1,11 @@
 <?php
+	require_once("classes/class.User.php");
+	
 	session_start();
 
-	require_once("Controllers/class.PageController.php");
+	require_once("Controllers/class.NewRequestController.php");
 
-	$controller = new PageController();
+	$controller = new NewRequestController();
 ?>
 
 <!DOCTYPE html>
@@ -25,24 +27,18 @@
 	<?php require_once("Components/Drawer.php") ?>
 
 	<!-- Content Start -->
-	<form class="contentContainer inFrame">
-		<h1 class="contentTitle">Request For {Post Name} From {al3amel alrequest Name}</h1>
-		<div class="questionContainer">
-			<label class="question">Da3et fen w alsa3a kam??</label> <br>
-			<input type="text" class="answer">
-		</div>
-		<div class="questionContainer">
-			<label class="question">Da3et fen w alsa3a kam??</label> <br>
-			<input type="text" class="answer">
-		</div>
-		<div class="questionContainer">
-			<label class="question">Da3et fen w alsa3a kam??</label> <br>
-			<input type="text" class="answer">
-		</div>
-		<div class="questionContainer">
-			<label class="question">Da3et fen w alsa3a kam??</label> <br>
-			<input type="text" class="answer">
-		</div>
+	<form class="contentContainer inFrame" method="POST" action="?postId=<?= $_GET["postId"] ?>">
+		<h1 class="contentTitle">
+			New Request For <?= $controller -> getPost() -> getName() ?>
+		</h1>
+
+		<?php foreach ($controller -> getPost() -> getQuestions() as $index => $question): ?>
+			<div class="questionContainer">
+				<label class="question"><?= $question ?></label> <br>
+				<input type="text" class="answer" required name="<?= $controller -> getPost() -> getQuestionId($index) ?>">
+			</div>
+		<?php endforeach;?>
+
 		<div class="buttonsContainer">
 			<input type="submit" class="submit">
 		</div>

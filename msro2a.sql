@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2018 at 02:04 PM
+-- Generation Time: Dec 22, 2018 at 05:46 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -25,23 +25,54 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `answers`
+--
+
+CREATE TABLE `answers` (
+  `id` int(11) NOT NULL,
+  `requestId` int(11) NOT NULL,
+  `answer` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+
+--
+-- Dumping data for table `answers`
+--
+
+INSERT INTO `answers` (`id`, `requestId`, `answer`) VALUES
+(27, 18, 'hnak'),
+(28, 19, 'hoho');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
-  `postId` int(11) NOT NULL,
-  `category` varchar(20) NOT NULL
+  `Category` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `postId`, `category`) VALUES
-(1, 3, 'Mobiles'),
-(2, 3, 'Electronics'),
-(3, 4, 'Mobiles');
+INSERT INTO `categories` (`id`, `Category`) VALUES
+(1, 'Mobiles'),
+(2, 'Electronics');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `message`
+--
+
+CREATE TABLE `message` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `msgStyle` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
 -- --------------------------------------------------------
 
@@ -62,8 +93,19 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `userId`, `imgUrl`, `description`, `name`) VALUES
-(3, 1, 'imgs/item1.jpg', 'IPhone XS l2eto fe alcity mrme, s7bo 8be awe bsra7a y3ne hwa da3 mno 1000$ mn8er m ya5od balo??', 'IPhone'),
-(4, 1, 'imgs/item1.jpg', 'IPhone XS 2 l2eto fe alcity mrme, s7bo 8be awe bsra7a y3ne hwa da3 mno 1000$ mn8er m ya5od balo??', 'IPhone Bardo');
+(5, 2, 'imgs/item2.jpg', 'Sma3a gmela', 'Sma3a');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `postscategories`
+--
+
+CREATE TABLE `postscategories` (
+  `id` int(11) NOT NULL,
+  `postId` int(11) NOT NULL,
+  `categoryId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
 -- --------------------------------------------------------
 
@@ -76,6 +118,34 @@ CREATE TABLE `questions` (
   `postId` int(11) NOT NULL,
   `question` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`id`, `postId`, `question`) VALUES
+(5, 5, 'Da3et fen?');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `requests`
+--
+
+CREATE TABLE `requests` (
+  `id` int(11) NOT NULL,
+  `postId` int(11) NOT NULL,
+  `ownerId` int(11) NOT NULL,
+  `postOwnerId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+
+--
+-- Dumping data for table `requests`
+--
+
+INSERT INTO `requests` (`id`, `postId`, `ownerId`, `postOwnerId`) VALUES
+(18, 5, 1, 2),
+(19, 5, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -96,18 +166,32 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fullName`, `phoneNumber`, `email`, `imgUrl`) VALUES
-(1, 'Gamal Khaled', '01000000000', 'Gamal@gmail.com', 'imgs/Client.png');
+(1, 'Gamal Khaled', '01000000000', 'Gamal@gmail.com', 'imgs/Client.png'),
+(2, 'Sayed Hussien', '1111111111', 'Sayed@gmail.com', 'imgs/Client.png');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `answers`
+--
+ALTER TABLE `answers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `requestId` (`requestId`);
+
+--
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `postId` (`postId`);
+  ADD KEY `message_ibfk_1` (`userId`);
 
 --
 -- Indexes for table `posts`
@@ -117,11 +201,33 @@ ALTER TABLE `posts`
   ADD KEY `userId` (`userId`);
 
 --
+-- Indexes for table `postscategories`
+--
+ALTER TABLE `postscategories`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `postId` (`postId`),
+  ADD KEY `categoryId` (`categoryId`);
+
+--
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `postId` (`postId`);
+
+--
+-- Indexes for table `requests`
+--
+ALTER TABLE `requests`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `postId` (`postId`),
+  ADD KEY `ownerId` (`ownerId`),
+  ADD KEY `postId_2` (`postId`),
+  ADD KEY `ownerId_2` (`ownerId`),
+  ADD KEY `postId_3` (`postId`),
+  ADD KEY `ownerId_3` (`ownerId`),
+  ADD KEY `ownerId_4` (`ownerId`),
+  ADD KEY `postOwnerId` (`postOwnerId`);
 
 --
 -- Indexes for table `users`
@@ -136,46 +242,87 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `answers`
+--
+ALTER TABLE `answers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+--
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `postscategories`
+--
+ALTER TABLE `postscategories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `requests`
+--
+ALTER TABLE `requests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `categories`
+-- Constraints for table `answers`
 --
-ALTER TABLE `categories`
-  ADD CONSTRAINT `categories_ibfk_1` FOREIGN KEY (`postId`) REFERENCES `posts` (`id`);
+ALTER TABLE `answers`
+  ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`requestId`) REFERENCES `requests` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `message`
+--
+ALTER TABLE `message`
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `postscategories`
+--
+ALTER TABLE `postscategories`
+  ADD CONSTRAINT `postscategories_ibfk_2` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`),
+  ADD CONSTRAINT `postscategories_ibfk_3` FOREIGN KEY (`postId`) REFERENCES `posts` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `questions`
 --
 ALTER TABLE `questions`
-  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`postId`) REFERENCES `posts` (`id`);
+  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`postId`) REFERENCES `posts` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `requests`
+--
+ALTER TABLE `requests`
+  ADD CONSTRAINT `requests_ibfk_1` FOREIGN KEY (`ownerId`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `requests_ibfk_2` FOREIGN KEY (`postId`) REFERENCES `posts` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `requests_ibfk_3` FOREIGN KEY (`postOwnerId`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

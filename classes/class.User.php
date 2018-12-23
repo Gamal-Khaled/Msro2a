@@ -14,7 +14,7 @@ class User
     private $password = null;
 
     private $postsId = null;
-    private $msgsId = null;
+    private $msgs = [];
     private $sentRequestsId = null;
     private $recievedRequestsId = null;
 
@@ -30,7 +30,7 @@ class User
 
     public function getId()
     {
-        return $this -> $id;
+        return $this -> id;
     }
     
     public function getName()
@@ -41,12 +41,16 @@ class User
     public function getEmail()
     {
         return $this -> email;
+<<<<<<< HEAD
         
+=======
+>>>>>>> 24b3f08baf028a17267add6f014f8004d031e5f8
     }
 
     public function getPhoneNumber()
     {
         return $this -> phoneNumber;
+<<<<<<< HEAD
     }
 
     
@@ -59,43 +63,55 @@ class User
     
 
     public function getPostIdByIndex( integer $ind)
+=======
+    }
+
+    public function getPostsId()
+>>>>>>> 24b3f08baf028a17267add6f014f8004d031e5f8
     {
         
     }
 
-    public function addPost( integer $postId)
+    public function getPostIdByIndex($ind)
     {
         
     }
 
-    public function removePost( integer $ind)
+    public function addPost($postId)
     {
         
     }
 
+<<<<<<< HEAD
     
+=======
+    public function removePost($ind)
+    {
+        
+    }
+>>>>>>> 24b3f08baf028a17267add6f014f8004d031e5f8
 
     public function getImg()
     {
-        
+        return $this -> imgUrl;
     }
 
-    public function getMessagesIds()
+    public function getMessages()
+    {
+        return $this -> msgs;
+    }
+
+    public function getMessageByIndex($ind)
     {
         
     }
 
-    public function getMessageByIndex( integer $ind)
+    public function addMessage($msg)
     {
-        
+        array_push($this -> msgs, $msg);
     }
 
-    public function addMessage( integer $MsgId)
-    {
-
-    }
-
-    public function removeMessage( integer $MsgInd)
+    public function removeMessage($MsgInd)
     {
         
     }
@@ -105,17 +121,17 @@ class User
         
     }
 
-    public function getSentRequestByIndex( integer $ind)
+    public function getSentRequestByIndex($ind)
     {
         
     }
 
-    public function addSentRequest( integer $requestId)
+    public function addSentRequest($requestId)
     {
         
     }
 
-    public function removeSentRequest( integer $requestInd)
+    public function removeSentRequest($requestInd)
     {
         
     }
@@ -132,14 +148,18 @@ class User
         
     }
 
-    public function addRecievedRequest( integer $requestId)
+    public function addRecievedRequest($requestId)
     {
         
     }
 
-    public function removeRecievedRequest( integer $requestIndex)
+    public function removeRecievedRequest($requestIndex)
     {
         
+    }
+
+    public function setMessages($messages){
+        $this -> msgs = $messages;
     }
 }
 ?>

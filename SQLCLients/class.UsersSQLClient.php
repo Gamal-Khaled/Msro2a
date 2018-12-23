@@ -24,7 +24,7 @@ class UsersSQLClient extends SQLClient
 
     public function deleteUserAccount($userId)
     {
-        
+        $this -> db -> query("DELETE FROM `users` WHERE id = $userId");
     }
 
     public function getUserByEmail($email)

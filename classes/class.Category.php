@@ -10,7 +10,7 @@ class Category
         $this -> id = $id;
         $this -> categoryName = $categoryName;
     }
-
+    
     public function getId()
     {
         return $this -> id;

@@ -1,4 +1,6 @@
 <?php
+	require_once("classes/class.User.php");
+
 	session_start();
 
 	require_once("Controllers/class.MainPageController.php");
@@ -40,8 +42,12 @@
 					<div class="flexColumn">
 						<div class="flexColumn postDetails">
 							<div class="postOwner">
-								<img src="imgs/Client.png" class="clientImg">
-								<label><?= $controller -> getUserById($post -> getUserId()) -> getName() ?></label>
+								<img src="<?= $post -> getOwner() -> getImg() ?>" class="clientImg">
+								<label><?= $post -> getOwner() -> getName() ?></label>
+							</div>
+							<div>
+								<label>Name</label> <br>
+								<label><?= $post -> getName() ?></label>
 							</div>
 							<div>
 								<label>Description</label> <br>
@@ -56,7 +62,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="flexRow postButtons" onclick="onMineButtonClick(<?=$post -> getId()?>, <?= $controller -> isLoggedIn() ? '1' : '0' ?>)"><p>It's Mine</p></div>
+				<?php if ($post -> getOwner() -> getId() != $controller -> getCurrentUser() -> getId()):?>
+					<div class="flexRow postButtons" onclick="onMineButtonClick(<?=$post -> getId()?>, <?= $controller -> isLoggedIn() ? '1' : '0' ?>)"><p>It's Mine</p></div>
+				<?php endif; ?>
 			</div>
 		<?php endforeach; ?>
 	</div>

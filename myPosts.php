@@ -1,4 +1,6 @@
 <?php
+	require_once("classes/class.User.php");
+	
 	session_start();
 
 	require_once("Controllers/class.MyPostsController.php");
@@ -19,6 +21,8 @@
 	<link rel="stylesheet" type="text/css" href="css/nav.css">
 	<link rel="stylesheet" type="text/css" href="css/Drawer.css">
 	<link rel="stylesheet" type="text/css" href="css/myPosts.css">
+
+	<script type="text/javascript" src="js/myPosts.js"></script>
 </head>
 <body>
 	<?php require_once("Components/Nav.php") ?>
@@ -31,176 +35,58 @@
 			<div class="flexColumn">
 				<div class="flexColumn postDetails">
 					<div class="postOwner">
-						<label>Sayed Abo-7feza</label>
+						<label><?= $controller -> getCurrentUser() -> getName() ?></label>
 					</div>
 					<div>
 						<label>Email</label> <br>
-						<label>Sayed_Abo_7feza@gmail.com</label>
+						<label><?= $controller -> getCurrentUser() -> getEmail() ?></label>
 					</div>
 					<div>
 						<label>Phone Number</label> <br>
-						<label>010000000000</label>
+						<label><?= $controller -> getCurrentUser() -> getPhoneNumber() ?></label>
 					</div>
 				</div>
-				<div class="buttonsContainer flexRow">
-					<button class="addPostButton">Add Post</button>
-					<button class="deleteAccButton">Delete Account</button>
-				</div>
+				<form class="buttonsContainer flexRow" action="myPosts.php" method="POST">
+					<input type="hidden" name="deleteAccount" value="1">
+					<div onclick="onEditPostClick(-1)" class="addPostButton">Add Post</div>
+					<input class="deleteAccButton" value="Delete Account" type="submit">
+				</form>
 			</div>
 		</div>
-		<div class="flexColumn">
-			<div class="post flexRow">
-				<img src="imgs/item1.jpg">
-				<div class="flexColumn">
-					<div class="flexColumn postDetails">
-						<div class="postOwner">
-							<img src="imgs/Client.png" class="clientImg">
-							<label>Sayed Abo-7feza</label>
-						</div>
-						<div>
-							<label>Description</label> <br>
-							<label>IPhone XS l2eto fe alcity mrme, s7bo 8be awe bsra7a y3ne hwa da3 mno 1000$ mn8er m ya5od balo??</label>
-						</div>
-						<div>
-							<label>Categories</label> <br>
-							<label>Mobiles, Electronics, Personal 7agat</label>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="flexRow">
-				<div class="flexRow postButtons editButton"><p>Edit Post</p></div>
-				<div class="flexRow postButtons"><p>Delete Post</p></div>
-			</div>
-		</div>
-		<div class="flexColumn">
-			<div class="post flexRow">
-				<img src="imgs/item1.jpg">
-				<div class="flexColumn">
-					<div class="flexColumn postDetails">
-						<div class="postOwner">
-							<img src="imgs/Client.png" class="clientImg">
-							<label>Sayed Abo-7feza</label>
-						</div>
-						<div>
-							<label>Description</label> <br>
-							<label>IPhone XS l2eto fe alcity mrme, s7bo 8be awe bsra7a y3ne hwa da3 mno 1000$ mn8er m ya5od balo??</label>
-						</div>
-						<div>
-							<label>Categories</label> <br>
-							<label>Mobiles, Electronics, Personal 7agat</label>
+		<?php foreach ($controller -> getPosts() as $post): ?>
+			<div class="flexColumn">
+				<div class="post flexRow">
+				<img src="<?= $post -> getImg() ?>">
+					<div class="flexColumn">
+						<div class="flexColumn postDetails">
+							<div class="postOwner">
+								<img src="<?= $post -> getOwner() -> getImg() ?>" class="clientImg">
+								<label><?= $post -> getOwner() -> getName() ?></label>
+							</div>
+							<div>
+								<label>Name</label> <br>
+								<label><?= $post -> getName() ?></label>
+							</div>
+							<div>
+								<label>Description</label> <br>
+								<label><?= $post -> getDescription() ?></label>
+							</div>
+							<div>
+								<label>Categories</label> <br>
+								<?php foreach ($post -> getCategories() as $category): ?>
+									<label><?= $category -> getName() ?>, </label>
+								<?php endforeach;?>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="flexRow">
-				<div class="flexRow postButtons editButton"><p>Edit Post</p></div>
-				<div class="flexRow postButtons"><p>Delete Post</p></div>
-			</div>
-		</div>
-		<div class="flexColumn">
-			<div class="post flexRow">
-				<img src="imgs/item1.jpg">
-				<div class="flexColumn">
-					<div class="flexColumn postDetails">
-						<div class="postOwner">
-							<img src="imgs/Client.png" class="clientImg">
-							<label>Sayed Abo-7feza</label>
-						</div>
-						<div>
-							<label>Description</label> <br>
-							<label>IPhone XS l2eto fe alcity mrme, s7bo 8be awe bsra7a y3ne hwa da3 mno 1000$ mn8er m ya5od balo??</label>
-						</div>
-						<div>
-							<label>Categories</label> <br>
-							<label>Mobiles, Electronics, Personal 7agat</label>
-						</div>
-					</div>
+				<div class="flexRow">
+					<div onclick="onEditPostClick(<?=$post -> getId()?>)" class="flexRow postButtons editButton"><p>Edit Post</p></div>
+					<div onclick="onDeletePostClick(<?=$post -> getId()?>)" class="flexRow postButtons"><p>Delete Post</p></div>
 				</div>
 			</div>
-			<div class="flexRow">
-				<div class="flexRow postButtons editButton"><p>Edit Post</p></div>
-				<div class="flexRow postButtons"><p>Delete Post</p></div>
-			</div>
-		</div>
-		<div class="flexColumn">
-			<div class="post flexRow">
-				<img src="imgs/item1.jpg">
-				<div class="flexColumn">
-					<div class="flexColumn postDetails">
-						<div class="postOwner">
-							<img src="imgs/Client.png" class="clientImg">
-							<label>Sayed Abo-7feza</label>
-						</div>
-						<div>
-							<label>Description</label> <br>
-							<label>IPhone XS l2eto fe alcity mrme, s7bo 8be awe bsra7a y3ne hwa da3 mno 1000$ mn8er m ya5od balo??</label>
-						</div>
-						<div>
-							<label>Categories</label> <br>
-							<label>Mobiles, Electronics, Personal 7agat</label>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="flexRow">
-				<div class="flexRow postButtons editButton"><p>Edit Post</p></div>
-				<div class="flexRow postButtons"><p>Delete Post</p></div>
-			</div>
-		</div>
-		<div class="flexColumn">
-			<div class="post flexRow">
-				<img src="imgs/item1.jpg">
-				<div class="flexColumn">
-					<div class="flexColumn postDetails">
-						<div class="postOwner">
-							<img src="imgs/Client.png" class="clientImg">
-							<label>Sayed Abo-7feza</label>
-						</div>
-						<div>
-							<label>Description</label> <br>
-							<label>IPhone XS l2eto fe alcity mrme, s7bo 8be awe bsra7a y3ne hwa da3 mno 1000$ mn8er m ya5od balo??</label>
-						</div>
-						<div>
-							<label>Categories</label> <br>
-							<label>Mobiles, Electronics, Personal 7agat</label>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="flexRow">
-				<div class="flexRow postButtons editButton"><p>Edit Post</p></div>
-				<div class="flexRow postButtons"><p>Delete Post</p></div>
-			</div>
-		</div>
-		<div class="flexColumn">
-			<div class="post flexRow">
-				<img src="imgs/item1.jpg">
-				<div class="flexColumn">
-					<div class="flexColumn postDetails">
-						<div class="postOwner">
-							<img src="imgs/Client.png" class="clientImg">
-							<label>Sayed Abo-7feza</label>
-						</div>
-						<div>
-							<label>Description</label> <br>
-							<label>IPhone XS l2eto fe alcity mrme, s7bo 8be awe bsra7a y3ne hwa da3 mno 1000$ mn8er m ya5od balo??</label>
-						</div>
-						<div>
-							<label>Categories</label> <br>
-							<label>Mobiles, Electronics, Personal 7agat</label>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="flexRow">
-				<div class="flexRow postButtons editButton"><p>Edit Post</p></div>
-				<div class="flexRow postButtons"><p>Delete Post</p></div>
-			</div>
-		</div>
+		<?php endforeach; ?>
 	</div>
 	<!-- Content End -->
-
-	<script type="text/javascript" src="js/myPosts.js"></script>
 </body>
 </html>
