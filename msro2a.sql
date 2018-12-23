@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2018 at 05:46 PM
+-- Generation Time: Dec 23, 2018 at 08:55 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -34,14 +34,6 @@ CREATE TABLE `answers` (
   `answer` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
---
--- Dumping data for table `answers`
---
-
-INSERT INTO `answers` (`id`, `requestId`, `answer`) VALUES
-(27, 18, 'hnak'),
-(28, 19, 'hoho');
-
 -- --------------------------------------------------------
 
 --
@@ -59,7 +51,8 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id`, `Category`) VALUES
 (1, 'Mobiles'),
-(2, 'Electronics');
+(2, 'Electronics'),
+(3, 'Sa3at');
 
 -- --------------------------------------------------------
 
@@ -88,13 +81,6 @@ CREATE TABLE `posts` (
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
---
--- Dumping data for table `posts`
---
-
-INSERT INTO `posts` (`id`, `userId`, `imgUrl`, `description`, `name`) VALUES
-(5, 2, 'imgs/item2.jpg', 'Sma3a gmela', 'Sma3a');
-
 -- --------------------------------------------------------
 
 --
@@ -119,13 +105,6 @@ CREATE TABLE `questions` (
   `question` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
---
--- Dumping data for table `questions`
---
-
-INSERT INTO `questions` (`id`, `postId`, `question`) VALUES
-(5, 5, 'Da3et fen?');
-
 -- --------------------------------------------------------
 
 --
@@ -139,14 +118,6 @@ CREATE TABLE `requests` (
   `postOwnerId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
---
--- Dumping data for table `requests`
---
-
-INSERT INTO `requests` (`id`, `postId`, `ownerId`, `postOwnerId`) VALUES
-(18, 5, 1, 2),
-(19, 5, 1, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -158,16 +129,9 @@ CREATE TABLE `users` (
   `fullName` varchar(50) NOT NULL,
   `phoneNumber` varchar(11) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
-  `imgUrl` varchar(150) NOT NULL DEFAULT 'imgs/Client.png'
+  `imgUrl` varchar(150) NOT NULL DEFAULT 'imgs/Client.png',
+  `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `fullName`, `phoneNumber`, `email`, `imgUrl`) VALUES
-(1, 'Gamal Khaled', '01000000000', 'Gamal@gmail.com', 'imgs/Client.png'),
-(2, 'Sayed Hussien', '1111111111', 'Sayed@gmail.com', 'imgs/Client.png');
 
 --
 -- Indexes for dumped tables
@@ -245,12 +209,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `message`
 --
@@ -260,22 +224,22 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `postscategories`
 --
 ALTER TABLE `postscategories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 --
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
