@@ -20,7 +20,10 @@ class SignInController extends PageController
 
     public function __construct() {
         parent::__construct();
-        
+
+        if($this -> isLoggedIn())
+            header("Location: index.php");
+
         $this -> userSQLClient = new UsersSQLClient();
         
         if(isset($_POST['submit'])) {
